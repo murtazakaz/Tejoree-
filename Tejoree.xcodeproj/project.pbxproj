@@ -8,28 +8,55 @@
 
 /* Begin PBXBuildFile section */
 		18AC1A849A5DD2F8CBC9119E /* Pods_Tejoree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A1E3CD2D2C66BD4C3C226F /* Pods_Tejoree.framework */; };
+		FA46EE771FDD7A010001D5BB /* AdditionDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46EE761FDD7A010001D5BB /* AdditionDeletionViewController.swift */; };
+		FA46EE7C1FDD7A310001D5BB /* AdditionDeletionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46EE7A1FDD7A310001D5BB /* AdditionDeletionTableViewCell.swift */; };
+		FA46EE7D1FDD7A310001D5BB /* AdditionDeletionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA46EE7B1FDD7A310001D5BB /* AdditionDeletionTableViewCell.xib */; };
+		FA639F041FD749D900F7CBA0 /* HighConvictionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA639F021FD749D900F7CBA0 /* HighConvictionTableViewCell.swift */; };
+		FA639F051FD749D900F7CBA0 /* HighConvictionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA639F031FD749D900F7CBA0 /* HighConvictionTableViewCell.xib */; };
 		FA6867A01FC3335600C2F9FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68679F1FC3335600C2F9FF /* AppDelegate.swift */; };
 		FA6867A21FC3335600C2F9FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6867A11FC3335600C2F9FF /* ViewController.swift */; };
 		FA6867A51FC3335600C2F9FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6867A31FC3335600C2F9FF /* Main.storyboard */; };
 		FA6867A71FC3335600C2F9FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA6867A61FC3335600C2F9FF /* Assets.xcassets */; };
 		FA6867AA1FC3335600C2F9FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6867A81FC3335600C2F9FF /* LaunchScreen.storyboard */; };
+		FA84D31E1FD7523C007FE403 /* BrokerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA84D31D1FD7523C007FE403 /* BrokerViewController.swift */; };
+		FA8593BE1FDD609F009F0E81 /* StockCompanyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8593BC1FDD609F009F0E81 /* StockCompanyTableViewCell.swift */; };
+		FA8593BF1FDD609F009F0E81 /* StockCompanyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8593BD1FDD609F009F0E81 /* StockCompanyTableViewCell.xib */; };
+		FA8593C11FDD6AAF009F0E81 /* StockRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8593C01FDD6AAF009F0E81 /* StockRateViewController.swift */; };
 		FA8B00491FD0AE4900B839A0 /* TableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B00471FD0AE4900B839A0 /* TableViewCell2.swift */; };
 		FA8B004A1FD0AE4900B839A0 /* TableViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8B00481FD0AE4900B839A0 /* TableViewCell2.xib */; };
+		FA94F87D1FDD4A2A00B05978 /* LIBORTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94F87B1FDD4A2A00B05978 /* LIBORTableViewCell.swift */; };
+		FA94F87E1FDD4A2A00B05978 /* LIBORTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA94F87C1FDD4A2A00B05978 /* LIBORTableViewCell.xib */; };
+		FA94F8811FDD4A4D00B05978 /* PKRVTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94F87F1FDD4A4D00B05978 /* PKRVTableViewCell.swift */; };
+		FA94F8821FDD4A4D00B05978 /* PKRVTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA94F8801FDD4A4D00B05978 /* PKRVTableViewCell.xib */; };
+		FA94F8851FDD576100B05978 /* ForexRatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA94F8831FDD576100B05978 /* ForexRatesTableViewCell.swift */; };
+		FA94F8861FDD576100B05978 /* ForexRatesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA94F8841FDD576100B05978 /* ForexRatesTableViewCell.xib */; };
 		FAAE1DEB1FC5D5DC00F1096D /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE1DEA1FC5D5DC00F1096D /* TableViewController.swift */; };
 		FAAE1DEE1FC5D73600F1096D /* TableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE1DEC1FC5D73600F1096D /* TableViewCell1.swift */; };
 		FAAE1DEF1FC5D73600F1096D /* TableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAE1DED1FC5D73600F1096D /* TableViewCell1.xib */; };
+		FAC823911FE0732C00A6C366 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC823901FE0732C00A6C366 /* SignupViewController.swift */; };
+		FAC823931FE0733B00A6C366 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC823921FE0733B00A6C366 /* ForgetPasswordViewController.swift */; };
 		FACE8C6B1FD736CC0068FED5 /* InsightTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE8C6A1FD736CC0068FED5 /* InsightTableViewController.swift */; };
 		FACE8C6D1FD737420068FED5 /* HighConvictionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE8C6C1FD737420068FED5 /* HighConvictionTableViewController.swift */; };
-		FACE8C6F1FD7375F0068FED5 /* StockRatingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE8C6E1FD7375F0068FED5 /* StockRatingTableViewController.swift */; };
+		FACE8C721FD73F070068FED5 /* InsightRowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACE8C701FD73F070068FED5 /* InsightRowTableViewCell.swift */; };
+		FACE8C731FD73F070068FED5 /* InsightRowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACE8C711FD73F070068FED5 /* InsightRowTableViewCell.xib */; };
 		FAE11EC01FD41FC500EDCE62 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE11EBF1FD41FC500EDCE62 /* MarketViewController.swift */; };
 		FAE11EC31FD421CC00EDCE62 /* MarketDataSnapShotsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE11EC11FD421CC00EDCE62 /* MarketDataSnapShotsTableViewCell.swift */; };
 		FAE11EC41FD421CC00EDCE62 /* MarketDataSnapShotsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE11EC21FD421CC00EDCE62 /* MarketDataSnapShotsTableViewCell.xib */; };
+		FAF24A491FD9E3FF00E12750 /* MoneyMarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF24A481FD9E3FF00E12750 /* MoneyMarketViewController.swift */; };
+		FAF24A4B1FD9E41000E12750 /* ForexRatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF24A4A1FD9E41000E12750 /* ForexRatesViewController.swift */; };
+		FAF24A4E1FD9EB4000E12750 /* KIBORTableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF24A4C1FD9EB4000E12750 /* KIBORTableViewCell1.swift */; };
+		FAF24A4F1FD9EB4000E12750 /* KIBORTableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF24A4D1FD9EB4000E12750 /* KIBORTableViewCell1.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		76D10F7F2B033ACE8D59C9A1 /* Pods-Tejoree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tejoree.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tejoree/Pods-Tejoree.release.xcconfig"; sourceTree = "<group>"; };
 		92A1E3CD2D2C66BD4C3C226F /* Pods_Tejoree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tejoree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B24CF7F74D315B1A2ECCE1F4 /* Pods-Tejoree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tejoree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tejoree/Pods-Tejoree.debug.xcconfig"; sourceTree = "<group>"; };
+		FA46EE761FDD7A010001D5BB /* AdditionDeletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionDeletionViewController.swift; sourceTree = "<group>"; };
+		FA46EE7A1FDD7A310001D5BB /* AdditionDeletionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionDeletionTableViewCell.swift; sourceTree = "<group>"; };
+		FA46EE7B1FDD7A310001D5BB /* AdditionDeletionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdditionDeletionTableViewCell.xib; sourceTree = "<group>"; };
+		FA639F021FD749D900F7CBA0 /* HighConvictionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighConvictionTableViewCell.swift; sourceTree = "<group>"; };
+		FA639F031FD749D900F7CBA0 /* HighConvictionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HighConvictionTableViewCell.xib; sourceTree = "<group>"; };
 		FA68679C1FC3335600C2F9FF /* Tejoree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tejoree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA68679F1FC3335600C2F9FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA6867A11FC3335600C2F9FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,17 +64,34 @@
 		FA6867A61FC3335600C2F9FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA6867A91FC3335600C2F9FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA6867AB1FC3335600C2F9FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA84D31D1FD7523C007FE403 /* BrokerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokerViewController.swift; sourceTree = "<group>"; };
+		FA8593BC1FDD609F009F0E81 /* StockCompanyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCompanyTableViewCell.swift; sourceTree = "<group>"; };
+		FA8593BD1FDD609F009F0E81 /* StockCompanyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockCompanyTableViewCell.xib; sourceTree = "<group>"; };
+		FA8593C01FDD6AAF009F0E81 /* StockRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRateViewController.swift; sourceTree = "<group>"; };
 		FA8B00471FD0AE4900B839A0 /* TableViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell2.swift; sourceTree = "<group>"; };
 		FA8B00481FD0AE4900B839A0 /* TableViewCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell2.xib; sourceTree = "<group>"; };
+		FA94F87B1FDD4A2A00B05978 /* LIBORTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LIBORTableViewCell.swift; sourceTree = "<group>"; };
+		FA94F87C1FDD4A2A00B05978 /* LIBORTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LIBORTableViewCell.xib; sourceTree = "<group>"; };
+		FA94F87F1FDD4A4D00B05978 /* PKRVTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKRVTableViewCell.swift; sourceTree = "<group>"; };
+		FA94F8801FDD4A4D00B05978 /* PKRVTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PKRVTableViewCell.xib; sourceTree = "<group>"; };
+		FA94F8831FDD576100B05978 /* ForexRatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForexRatesTableViewCell.swift; sourceTree = "<group>"; };
+		FA94F8841FDD576100B05978 /* ForexRatesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForexRatesTableViewCell.xib; sourceTree = "<group>"; };
 		FAAE1DEA1FC5D5DC00F1096D /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		FAAE1DEC1FC5D73600F1096D /* TableViewCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell1.swift; sourceTree = "<group>"; };
 		FAAE1DED1FC5D73600F1096D /* TableViewCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell1.xib; sourceTree = "<group>"; };
+		FAC823901FE0732C00A6C366 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		FAC823921FE0733B00A6C366 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
 		FACE8C6A1FD736CC0068FED5 /* InsightTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightTableViewController.swift; sourceTree = "<group>"; };
 		FACE8C6C1FD737420068FED5 /* HighConvictionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighConvictionTableViewController.swift; sourceTree = "<group>"; };
-		FACE8C6E1FD7375F0068FED5 /* StockRatingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRatingTableViewController.swift; sourceTree = "<group>"; };
+		FACE8C701FD73F070068FED5 /* InsightRowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightRowTableViewCell.swift; sourceTree = "<group>"; };
+		FACE8C711FD73F070068FED5 /* InsightRowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InsightRowTableViewCell.xib; sourceTree = "<group>"; };
 		FAE11EBF1FD41FC500EDCE62 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		FAE11EC11FD421CC00EDCE62 /* MarketDataSnapShotsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDataSnapShotsTableViewCell.swift; sourceTree = "<group>"; };
 		FAE11EC21FD421CC00EDCE62 /* MarketDataSnapShotsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketDataSnapShotsTableViewCell.xib; sourceTree = "<group>"; };
+		FAF24A481FD9E3FF00E12750 /* MoneyMarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyMarketViewController.swift; sourceTree = "<group>"; };
+		FAF24A4A1FD9E41000E12750 /* ForexRatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForexRatesViewController.swift; sourceTree = "<group>"; };
+		FAF24A4C1FD9EB4000E12750 /* KIBORTableViewCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KIBORTableViewCell1.swift; sourceTree = "<group>"; };
+		FAF24A4D1FD9EB4000E12750 /* KIBORTableViewCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KIBORTableViewCell1.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +123,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FA46EE751FDD79DC0001D5BB /* AdditionDeletion */ = {
+			isa = PBXGroup;
+			children = (
+				FA46EE761FDD7A010001D5BB /* AdditionDeletionViewController.swift */,
+				FA46EE7A1FDD7A310001D5BB /* AdditionDeletionTableViewCell.swift */,
+				FA46EE7B1FDD7A310001D5BB /* AdditionDeletionTableViewCell.xib */,
+			);
+			path = AdditionDeletion;
+			sourceTree = "<group>";
+		};
 		FA6867931FC3335600C2F9FF = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +154,9 @@
 		FA68679E1FC3335600C2F9FF /* Tejoree */ = {
 			isa = PBXGroup;
 			children = (
+				FAC8238F1FE0730900A6C366 /* ForgetPasswordPage */,
+				FAC8238E1FE072FB00A6C366 /* SignupPage */,
+				FA46EE751FDD79DC0001D5BB /* AdditionDeletion */,
 				FACE8C651FD7364E0068FED5 /* BrokerPage */,
 				FACE8C641FD7363C0068FED5 /* AkeerPage */,
 				FA68679F1FC3335600C2F9FF /* AppDelegate.swift */,
@@ -112,6 +169,22 @@
 				FADDA0661FD1957100559026 /* MarketPage */,
 			);
 			path = Tejoree;
+			sourceTree = "<group>";
+		};
+		FAC8238E1FE072FB00A6C366 /* SignupPage */ = {
+			isa = PBXGroup;
+			children = (
+				FAC823901FE0732C00A6C366 /* SignupViewController.swift */,
+			);
+			path = SignupPage;
+			sourceTree = "<group>";
+		};
+		FAC8238F1FE0730900A6C366 /* ForgetPasswordPage */ = {
+			isa = PBXGroup;
+			children = (
+				FAC823921FE0733B00A6C366 /* ForgetPasswordViewController.swift */,
+			);
+			path = ForgetPasswordPage;
 			sourceTree = "<group>";
 		};
 		FACE8C641FD7363C0068FED5 /* AkeerPage */ = {
@@ -128,6 +201,7 @@
 		FACE8C651FD7364E0068FED5 /* BrokerPage */ = {
 			isa = PBXGroup;
 			children = (
+				FA84D31D1FD7523C007FE403 /* BrokerViewController.swift */,
 			);
 			path = BrokerPage;
 			sourceTree = "<group>";
@@ -136,6 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				FACE8C6A1FD736CC0068FED5 /* InsightTableViewController.swift */,
+				FACE8C701FD73F070068FED5 /* InsightRowTableViewCell.swift */,
+				FACE8C711FD73F070068FED5 /* InsightRowTableViewCell.xib */,
 			);
 			path = insightPage;
 			sourceTree = "<group>";
@@ -151,6 +227,8 @@
 			isa = PBXGroup;
 			children = (
 				FACE8C6C1FD737420068FED5 /* HighConvictionTableViewController.swift */,
+				FA639F021FD749D900F7CBA0 /* HighConvictionTableViewCell.swift */,
+				FA639F031FD749D900F7CBA0 /* HighConvictionTableViewCell.xib */,
 			);
 			path = highConvictionPage;
 			sourceTree = "<group>";
@@ -158,7 +236,9 @@
 		FACE8C691FD736830068FED5 /* StockPage */ = {
 			isa = PBXGroup;
 			children = (
-				FACE8C6E1FD7375F0068FED5 /* StockRatingTableViewController.swift */,
+				FA8593BC1FDD609F009F0E81 /* StockCompanyTableViewCell.swift */,
+				FA8593BD1FDD609F009F0E81 /* StockCompanyTableViewCell.xib */,
+				FA8593C01FDD6AAF009F0E81 /* StockRateViewController.swift */,
 			);
 			path = StockPage;
 			sourceTree = "<group>";
@@ -181,6 +261,16 @@
 				FAE11EBF1FD41FC500EDCE62 /* MarketViewController.swift */,
 				FAE11EC11FD421CC00EDCE62 /* MarketDataSnapShotsTableViewCell.swift */,
 				FAE11EC21FD421CC00EDCE62 /* MarketDataSnapShotsTableViewCell.xib */,
+				FAF24A481FD9E3FF00E12750 /* MoneyMarketViewController.swift */,
+				FAF24A4A1FD9E41000E12750 /* ForexRatesViewController.swift */,
+				FAF24A4C1FD9EB4000E12750 /* KIBORTableViewCell1.swift */,
+				FAF24A4D1FD9EB4000E12750 /* KIBORTableViewCell1.xib */,
+				FA94F87B1FDD4A2A00B05978 /* LIBORTableViewCell.swift */,
+				FA94F87C1FDD4A2A00B05978 /* LIBORTableViewCell.xib */,
+				FA94F87F1FDD4A4D00B05978 /* PKRVTableViewCell.swift */,
+				FA94F8801FDD4A4D00B05978 /* PKRVTableViewCell.xib */,
+				FA94F8831FDD576100B05978 /* ForexRatesTableViewCell.swift */,
+				FA94F8841FDD576100B05978 /* ForexRatesTableViewCell.xib */,
 			);
 			path = MarketPage;
 			sourceTree = "<group>";
@@ -249,10 +339,18 @@
 			files = (
 				FA8B004A1FD0AE4900B839A0 /* TableViewCell2.xib in Resources */,
 				FA6867AA1FC3335600C2F9FF /* LaunchScreen.storyboard in Resources */,
+				FA94F87E1FDD4A2A00B05978 /* LIBORTableViewCell.xib in Resources */,
 				FA6867A71FC3335600C2F9FF /* Assets.xcassets in Resources */,
+				FACE8C731FD73F070068FED5 /* InsightRowTableViewCell.xib in Resources */,
 				FA6867A51FC3335600C2F9FF /* Main.storyboard in Resources */,
+				FA94F8861FDD576100B05978 /* ForexRatesTableViewCell.xib in Resources */,
+				FA8593BF1FDD609F009F0E81 /* StockCompanyTableViewCell.xib in Resources */,
+				FA94F8821FDD4A4D00B05978 /* PKRVTableViewCell.xib in Resources */,
 				FAAE1DEF1FC5D73600F1096D /* TableViewCell1.xib in Resources */,
 				FAE11EC41FD421CC00EDCE62 /* MarketDataSnapShotsTableViewCell.xib in Resources */,
+				FAF24A4F1FD9EB4000E12750 /* KIBORTableViewCell1.xib in Resources */,
+				FA639F051FD749D900F7CBA0 /* HighConvictionTableViewCell.xib in Resources */,
+				FA46EE7D1FDD7A310001D5BB /* AdditionDeletionTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,15 +416,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				FACE8C6B1FD736CC0068FED5 /* InsightTableViewController.swift in Sources */,
+				FACE8C721FD73F070068FED5 /* InsightRowTableViewCell.swift in Sources */,
 				FA8B00491FD0AE4900B839A0 /* TableViewCell2.swift in Sources */,
 				FA6867A21FC3335600C2F9FF /* ViewController.swift in Sources */,
-				FACE8C6F1FD7375F0068FED5 /* StockRatingTableViewController.swift in Sources */,
+				FA94F87D1FDD4A2A00B05978 /* LIBORTableViewCell.swift in Sources */,
+				FA84D31E1FD7523C007FE403 /* BrokerViewController.swift in Sources */,
+				FA94F8811FDD4A4D00B05978 /* PKRVTableViewCell.swift in Sources */,
+				FAF24A4B1FD9E41000E12750 /* ForexRatesViewController.swift in Sources */,
 				FAAE1DEB1FC5D5DC00F1096D /* TableViewController.swift in Sources */,
 				FA6867A01FC3335600C2F9FF /* AppDelegate.swift in Sources */,
+				FA94F8851FDD576100B05978 /* ForexRatesTableViewCell.swift in Sources */,
+				FA46EE771FDD7A010001D5BB /* AdditionDeletionViewController.swift in Sources */,
+				FA8593BE1FDD609F009F0E81 /* StockCompanyTableViewCell.swift in Sources */,
 				FAE11EC01FD41FC500EDCE62 /* MarketViewController.swift in Sources */,
+				FAF24A491FD9E3FF00E12750 /* MoneyMarketViewController.swift in Sources */,
+				FA46EE7C1FDD7A310001D5BB /* AdditionDeletionTableViewCell.swift in Sources */,
 				FACE8C6D1FD737420068FED5 /* HighConvictionTableViewController.swift in Sources */,
+				FA639F041FD749D900F7CBA0 /* HighConvictionTableViewCell.swift in Sources */,
 				FAAE1DEE1FC5D73600F1096D /* TableViewCell1.swift in Sources */,
 				FAE11EC31FD421CC00EDCE62 /* MarketDataSnapShotsTableViewCell.swift in Sources */,
+				FAF24A4E1FD9EB4000E12750 /* KIBORTableViewCell1.swift in Sources */,
+				FAC823911FE0732C00A6C366 /* SignupViewController.swift in Sources */,
+				FAC823931FE0733B00A6C366 /* ForgetPasswordViewController.swift in Sources */,
+				FA8593C11FDD6AAF009F0E81 /* StockRateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

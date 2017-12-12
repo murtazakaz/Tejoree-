@@ -8,16 +8,23 @@
 
 import UIKit
 
-class InsightTableViewController: UITableViewController {
+struct InsightCellData{
+    let cell : Int!
+    let title: String!
+    let publishdate: String!
+    let publisher: String!
+    let analyst: String!
+    //let text5: String!
+    let thumbnailimage: UIImage!
+}
 
+class InsightTableViewController: UITableViewController {
+ var arrayofdata = [InsightCellData]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        arrayofdata = [InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader"))
+                       ]
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,26 +34,35 @@ class InsightTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+  
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return arrayofdata.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = Bundle.main.loadNibNamed("InsightRowTableViewCell", owner: self, options: nil)?.first as! InsightRowTableViewCell
+        cell.title.text = arrayofdata[indexPath.row].title
+        cell.publishDate.text = arrayofdata[indexPath.row].publishdate
+        cell.publishbyName.text = arrayofdata[indexPath.row].publisher
+        cell.analystName.text = arrayofdata[indexPath.row].analyst
+        cell.thumbnailImage.image = arrayofdata[indexPath.row].thumbnailimage
+        
         // Configure the cell...
 
         return cell
     }
-    */
-
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+      
+            return 90
+       
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailnews = storyboard?.instantiateViewController(withIdentifier: "innerpage")
+        navigationController?.pushViewController( detailnews!, animated: true)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -93,3 +109,4 @@ class InsightTableViewController: UITableViewController {
     */
 
 }
+

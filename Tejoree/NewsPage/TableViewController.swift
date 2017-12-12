@@ -30,8 +30,8 @@ class TableViewController: UITableViewController {
        /*let cellNib = UINib(nibName: "TableViewCell1", bundle: nil)
        self.tableView.register(cellNib, forCellReuseIdentifier: cellIndentifier)
  */
-        arrayofdata = [cellData(cell:1, text1:"POLITICS",text2: "NEGATIVE",text3: "05-11-2017",text4:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote",text5:"Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote", image: #imageLiteral(resourceName: "tableheader")),
-        cellData(cell:2, text1:"Politics",text2:"Negative",text3: "05-11-2017",text4:"Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote",text5:"this is sample text", image: #imageLiteral(resourceName: "tableheader")),
+        arrayofdata = [cellData(cell:1, text1:"POLITICS",text2: "NEGATIVE",text3: "05-11-2017",text4:"Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote",text5:"Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote", image: #imageLiteral(resourceName: "tableheader")),
+        cellData(cell:2, text1:"Politics",text2:"Negative",text3: "05-11-2017",text4:"Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote",text5:"this is sample text", image: #imageLiteral(resourceName: "tableheader")),
         cellData(cell:2, text1:"Politics",text2:"Negative",text3: "05-11-2017",text4:"Protester interrupts Theresa",text5:"this is sample text", image: #imageLiteral(resourceName: "tableheader")),cellData(cell:2, text1:"Politics",text2:"Negative",text3: "05-11-2017",text4:"Protester interrupts Theresa",text5:"this is sample text", image: #imageLiteral(resourceName: "tableheader")),]
     }
 
@@ -80,11 +80,10 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if arrayofdata[indexPath.row].cell == 1{
            
-            return 373
-        }
+            return 338        }
         else{
            
-            return 126
+            return 90
             
         }
     }
