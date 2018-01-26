@@ -46,6 +46,7 @@
 		FAF24A4B1FD9E41000E12750 /* ForexRatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF24A4A1FD9E41000E12750 /* ForexRatesViewController.swift */; };
 		FAF24A4E1FD9EB4000E12750 /* KIBORTableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF24A4C1FD9EB4000E12750 /* KIBORTableViewCell1.swift */; };
 		FAF24A4F1FD9EB4000E12750 /* KIBORTableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF24A4D1FD9EB4000E12750 /* KIBORTableViewCell1.xib */; };
+		FAF97426201BDFE7006692F2 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF97425201BDFE7006692F2 /* NewsDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		FAF24A4A1FD9E41000E12750 /* ForexRatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForexRatesViewController.swift; sourceTree = "<group>"; };
 		FAF24A4C1FD9EB4000E12750 /* KIBORTableViewCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KIBORTableViewCell1.swift; sourceTree = "<group>"; };
 		FAF24A4D1FD9EB4000E12750 /* KIBORTableViewCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KIBORTableViewCell1.xib; sourceTree = "<group>"; };
+		FAF97425201BDFE7006692F2 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +253,7 @@
 				FAAE1DED1FC5D73600F1096D /* TableViewCell1.xib */,
 				FA8B00471FD0AE4900B839A0 /* TableViewCell2.swift */,
 				FA8B00481FD0AE4900B839A0 /* TableViewCell2.xib */,
+				FAF97425201BDFE7006692F2 /* NewsDetailViewController.swift */,
 			);
 			path = NewsPage;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				FAC823911FE0732C00A6C366 /* SignupViewController.swift in Sources */,
 				FAC823931FE0733B00A6C366 /* ForgetPasswordViewController.swift in Sources */,
 				FA8593C11FDD6AAF009F0E81 /* StockRateViewController.swift in Sources */,
+				FAF97426201BDFE7006692F2 /* NewsDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,6 +583,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PGV96RNN7X;
 				INFOPLIST_FILE = Tejoree/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = puzzlerz.Tejoree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -595,6 +600,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PGV96RNN7X;
 				INFOPLIST_FILE = Tejoree/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = puzzlerz.Tejoree;
 				PRODUCT_NAME = "$(TARGET_NAME)";

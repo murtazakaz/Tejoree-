@@ -16,12 +16,48 @@ struct cellData{
     let text5: String!
     let image: UIImage!
 }
+class News : Codable {
+    let data: [newsArray]
+    
+    init(data: [newsArray]) {
+        self.data = data
+    }
+}
+class newsArray: Codable {
+    
+    let id: String
+    let title: String
+    let description: String
+    let category_name: String
+    let post_datetime: String
+    let author : String
+    let post_image: String
+    let impact: String
+    
+    init( id: String, title: String, description: String, category_name: String ,post_datetime: String, author : String, post_image: String, impact: String) {
+        self.id = id
+        self.title = title
+        self.description = description
+        self.category_name = category_name
+        self.post_datetime =  post_datetime
+        self.author = author
+        self.post_image = post_image
+        self.impact = impact
+    }
+}
+
+
+
 class TableViewController: UITableViewController {
     
     var arrayofdata = [cellData]()
+    final let url = URL(string: "http://microblogging.wingnity.com/JSONParsingTutorial/jsonActors")
+   private var news = [newsArray]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+     //  downloadJson()
+        post()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -30,11 +66,81 @@ class TableViewController: UITableViewController {
        /*let cellNib = UINib(nibName: "TableViewCell1", bundle: nil)
        self.tableView.register(cellNib, forCellReuseIdentifier: cellIndentifier)
  */
+        
+       
         arrayofdata = [cellData(cell:1, text1:"POLITICS",text2: "NEGATIVE",text3: "05-11-2017",text4:"Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote",text5:"Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote", image: #imageLiteral(resourceName: "tableheader")),
         cellData(cell:2, text1:"Politics",text2:"Negative",text3: "05-11-2017",text4:"Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote",text5:"this is sample text", image: #imageLiteral(resourceName: "tableheader")),
         cellData(cell:2, text1:"Politics",text2:"Negative",text3: "05-11-2017",text4:"Protester interrupts Theresa",text5:"this is sample text", image: #imageLiteral(resourceName: "tableheader")),cellData(cell:2, text1:"Politics",text2:"Negative",text3: "05-11-2017",text4:"Protester interrupts Theresa",text5:"this is sample text", image: #imageLiteral(resourceName: "tableheader")),]
     }
-
+    func downloadJson() {
+        guard let downloadURL = url else { return }
+        URLSession.shared.dataTask(with: downloadURL) { data, urlResponse, error in
+            guard let data = data, error == nil, urlResponse != nil else {
+                print("something is wrong")
+                return
+            }
+            print("downloaded")
+            do
+            {
+                let decoder = JSONDecoder()
+                let downloadedActors = try decoder.decode(News.self, from: data)
+                self.news = downloadedActors.data
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            } catch {
+                print("something wrong after downloaded")
+            }
+            }.resume()
+    }
+    func post(){
+        guard let myUrl = URL(string: "http://videostreet.pk/tejori/tjApi/getCategoryData/") else { return }
+        var request = URLRequest(url:myUrl)
+        request.addValue("876564123", forHTTPHeaderField: "X-TJ-APIKEY")
+        request.httpMethod = "POST"// Compose a query string
+        
+        let postString = "category_id=1&category_type_id=1";
+        
+        request.httpBody = postString.data(using: String.Encoding.utf8);
+        
+        URLSession.shared.dataTask(with: request) { data, urlResponse, error in
+            guard let data = data, error == nil, urlResponse != nil else {
+                print("something is wrong")
+                return
+            }
+            print("downloaded")
+            
+        
+        
+       
+     /*
+        let task = URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            if error != nil
+            {
+                print("error=\(error)")
+                return
+            }
+            
+            // You can print out response object
+            print("response = \(response)")
+       */
+            //Let's convert response sent from a server side script to a NSDictionary object:
+            do
+            {
+                let decoder = JSONDecoder()
+                let downloadedActors = try decoder.decode(News.self, from: data)
+                self.news = downloadedActors.data
+                print(self.news[0].id)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            } catch {
+                print("something wrong after downloaded")
+            }
+        }.resume()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -50,35 +156,94 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return arrayofdata.count
+        print(news.count)
+        return news.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if arrayofdata[indexPath.row].cell == 1{
+        if news[indexPath.row].id == "1"{
+            
             let cell = Bundle.main.loadNibNamed("TableViewCell1", owner: self, options: nil)?.first as! TableViewCell1
-            cell.banner.image = arrayofdata[indexPath.row].image
-            cell.name1.text = arrayofdata[indexPath.row].text1
-            cell.name2.text = arrayofdata[indexPath.row].text2
-            cell.name3.text = arrayofdata[indexPath.row].text3
-            cell.title.text = arrayofdata[indexPath.row].text4
-            cell.detail.text = arrayofdata[indexPath.row].text5
+            
+            if let imageURL = URL(string: news[indexPath.row].post_image) {
+                DispatchQueue.global().async {
+                    let data = try? Data(contentsOf: imageURL)
+                    if let data = data {
+                        let image = UIImage(data: data)
+                        DispatchQueue.main.async {
+                            cell.banner.image = image
+                        }
+                    }
+                }
+                
+            }
+            
+          //  cell.banner.image = arrayofdata[indexPath.row].image
+            let separated = news[indexPath.row].post_datetime.split(separator: " ")
+            
+            if let some = separated.first {
+                let value = String(some)
+                 cell.name3.text = value//news[indexPath.row].post_datetime
+                // Output: "some"
+            }
+            if news[indexPath.row].impact == "-"{
+                cell.name2.text = "Negative"//news[indexPath.row].impact
+                 cell.name2.textColor = UIColor.red
+            }else {
+                cell.name2.text = "Positive"
+                }
+            
+            cell.name1.text = news[indexPath.row].category_name
+           // cell.name2.text = news[indexPath.row].impact
+            cell.title.text = news[indexPath.row].title
+            cell.detail.text = news[indexPath.row].description
+            
             return cell
+            
         } else {
+            
             let cell2 = Bundle.main.loadNibNamed("TableViewCell2", owner: self, options: nil)?.first as! TableViewCell2
-            cell2.thumbnail.image = arrayofdata[indexPath.row].image
-            cell2.type1.text = arrayofdata[indexPath.row].text1
-            cell2.type2.text = arrayofdata[indexPath.row].text2
-            cell2.datetext.text = arrayofdata[indexPath.row].text3
-            cell2.Title.text = arrayofdata[indexPath.row].text4
+                if let imageURL = URL(string: news[indexPath.row].post_image) {
+                    DispatchQueue.global().async {
+                        let data = try? Data(contentsOf: imageURL)
+                        if let data = data {
+                            let image = UIImage(data: data)
+                            DispatchQueue.main.async {
+                               
+                               cell2.thumbnail.image = image
+                            }
+                        }
+                    }
+                }
+            
+            let separated = news[indexPath.row].post_datetime.split(separator: " ")
+            
+            if let some = separated.first {
+                let value = String(some)
+                 cell2.datetext.text = value//news[indexPath.row].post_datetime
+                // Output: "some"
+            }
+            
+            if news[indexPath.row].impact == "-"{
+                 cell2.type2.text = "Negative"//news[indexPath.row].impact
+                cell2.type2.textColor = UIColor.red
+            }else {
+                 cell2.type2.text = "Positive"
+                
+            }
+            
+            cell2.type1.text = news[indexPath.row].category_name
+            cell2.Title.text = news[indexPath.row].title
+            
             return cell2
             
         }
         
-        
-    }
+            
+        }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if arrayofdata[indexPath.row].cell == 1{
+        if news[indexPath.row].id == "1"{
            
             return 338        }
         else{
@@ -89,8 +254,15 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailnews = storyboard?.instantiateViewController(withIdentifier: "newsinsights")
-        navigationController?.pushViewController( detailnews!, animated: true)
+        let detailnews = storyboard?.instantiateViewController(withIdentifier: "newsinsights") as! NewsDetailViewController
+        detailnews.category = news[indexPath.row].category_name
+        detailnews.impact = news[indexPath.row].impact
+        detailnews.date = news[indexPath.row].post_datetime
+        detailnews.banner = news[indexPath.row].post_image
+        detailnews.titles = news[indexPath.row].title
+        detailnews.descriptions = news[indexPath.row].description
+        navigationController?.pushViewController( detailnews, animated: true)
+        
     }
     /*
     // Override to support conditional editing of the table view.
