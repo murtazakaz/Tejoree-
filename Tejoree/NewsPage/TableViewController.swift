@@ -7,15 +7,7 @@
 //
 
 import UIKit
-struct cellData{
-    let cell : Int!
-    let text1: String!
-    let text2: String!
-    let text3: String!
-    let text4: String!
-    let text5: String!
-    let image: UIImage!
-}
+
 class News : Codable {
     let data: [newsArray]
     
@@ -50,29 +42,18 @@ class newsArray: Codable {
 
 class TableViewController: UITableViewController {
     
-    var arrayofdata = [cellData]()
-    final let url = URL(string: "http://microblogging.wingnity.com/JSONParsingTutorial/jsonActors")
+   
+   
    private var news = [newsArray]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
      //  downloadJson()
         post()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-       /*let cellNib = UINib(nibName: "TableViewCell1", bundle: nil)
-       self.tableView.register(cellNib, forCellReuseIdentifier: cellIndentifier)
- */
+   
         
-       
-        arrayofdata = [cellData(cell:1, text1:"POLITICS",text2: "NEGATIVE",text3: "05-11-2017",text4:"Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote",text5:"Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote", image: #imageLiteral(resourceName: "tableheader")),
-        cellData(cell:2, text1:"Politics",text2:"Negative",text3: "05-11-2017",text4:"Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote Protester interrupts Theresa May's keynoteProtester interrupts Theresa May's keynote",text5:"this is sample text", image: #imageLiteral(resourceName: "tableheader")),
-        cellData(cell:2, text1:"Politics",text2:"Negative",text3: "05-11-2017",text4:"Protester interrupts Theresa",text5:"this is sample text", image: #imageLiteral(resourceName: "tableheader")),cellData(cell:2, text1:"Politics",text2:"Negative",text3: "05-11-2017",text4:"Protester interrupts Theresa",text5:"this is sample text", image: #imageLiteral(resourceName: "tableheader")),]
     }
-    func downloadJson() {
+   /* func downloadJson() {
         guard let downloadURL = url else { return }
         URLSession.shared.dataTask(with: downloadURL) { data, urlResponse, error in
             guard let data = data, error == nil, urlResponse != nil else {
@@ -92,7 +73,7 @@ class TableViewController: UITableViewController {
                 print("something wrong after downloaded")
             }
             }.resume()
-    }
+    } */
     func post(){
         guard let myUrl = URL(string: "http://videostreet.pk/tejori/tjApi/getCategoryData/") else { return }
         var request = URLRequest(url:myUrl)
@@ -110,28 +91,12 @@ class TableViewController: UITableViewController {
             }
             print("downloaded")
             
-        
-        
-       
-     /*
-        let task = URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
-            
-            if error != nil
-            {
-                print("error=\(error)")
-                return
-            }
-            
-            // You can print out response object
-            print("response = \(response)")
-       */
-            //Let's convert response sent from a server side script to a NSDictionary object:
             do
             {
                 let decoder = JSONDecoder()
-                let downloadedActors = try decoder.decode(News.self, from: data)
-                self.news = downloadedActors.data
-                print(self.news[0].id)
+                let newsdata = try decoder.decode(News.self, from: data)
+                self.news = newsdata.data
+                //print(self.news[0].id)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -156,7 +121,7 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print(news.count)
+      
         return news.count
     }
 

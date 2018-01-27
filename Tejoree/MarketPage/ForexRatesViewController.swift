@@ -17,38 +17,79 @@ struct ForexData{
 }
 class ForexRatesViewController: UIViewController,UITableViewDelegate , UITableViewDataSource, UIPickerViewDataSource , UIPickerViewDelegate {
 
-    var arrayofdata = [ForexData]()
+    var ForexArray = [CommodityDatum]()
     @IBOutlet weak var MarketDropDown: UIPickerView!
     var pagelist = ["Market Data Snapshot","Money Market","Forex Rates"]
     @IBOutlet weak var dropdownValuetxt: UILabel!
     @IBOutlet weak var dropdownbtn: UIButton!
+    @IBOutlet weak var tableview: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchCommodities()
         MarketDropDown.dataSource = self
         MarketDropDown.delegate = self
         MarketDropDown.isHidden = true
         dropdownValuetxt.text = pagelist[2]
         
-        arrayofdata = [ForexData(cell:1, text1:"AUD", subtext1: "AUSTRALLIAN DOLLAR",text2: "0.1674",text3:"0.50%", arrowIcon: #imageLiteral(resourceName: "positive")),ForexData(cell:1, text1:"AUD", subtext1: "AUSTRALLIAN DOLLAR",text2: "0.1674",text3:"0.50%", arrowIcon: #imageLiteral(resourceName: "negative")),ForexData(cell:1, text1:"CAD", subtext1: "CANADIAN DOLLAR",text2: "0.1674",text3:"0.50%", arrowIcon: #imageLiteral(resourceName: "positive")),ForexData(cell:1, text1:"AUD", subtext1: "AUSTRALLIAN DOLLAR",text2: "0.1674",text3:"0.50%", arrowIcon: #imageLiteral(resourceName: "positive")),ForexData(cell:1, text1:"AUD", subtext1: "AUSTRALLIAN DOLLAR",text2: "0.1674",text3:"0.50%", arrowIcon: #imageLiteral(resourceName: "negative")),ForexData(cell:1, text1:"AUD", subtext1: "AUSTRALLIAN DOLLAR",text2: "0.1674",text3:"0.50%", arrowIcon: #imageLiteral(resourceName: "positive")),ForexData(cell:1, text1:"AUD", subtext1: "AUSTRALLIAN DOLLAR",text2: "0.1674",text3:"0.50%", arrowIcon: #imageLiteral(resourceName: "positive")),ForexData(cell:1, text1:"AUD", subtext1: "AUSTRALLIAN DOLLAR",text2: "0.1674",text3:"0.50%", arrowIcon: #imageLiteral(resourceName: "positive")),ForexData(cell:1, text1:"AUD", subtext1: "AUSTRALLIAN DOLLAR",text2: "0.1674",text3:"0.50%", arrowIcon: #imageLiteral(resourceName: "negative")),ForexData(cell:1, text1:"AUD", subtext1: "AUSTRALLIAN DOLLAR",text2: "0.1674",text3:"0.50%", arrowIcon: #imageLiteral(resourceName: "positive")),ForexData(cell:1, text1:"AUD", subtext1: "AUSTRALLIAN DOLLAR",text2: "0.1674",text3:"0.50%", arrowIcon: #imageLiteral(resourceName: "positive")),ForexData(cell:1, text1:"AUD", subtext1: "AUSTRALLIAN DOLLAR",text2: "0.1674",text3:"0.50%", arrowIcon: #imageLiteral(resourceName: "positive")),ForexData(cell:1, text1:"AUD", subtext1: "AUSTRALLIAN DOLLAR",text2: "0.1674",text3:"0.50%", arrowIcon: #imageLiteral(resourceName: "positive")),]
+      
     }
-
+    func fetchCommodities(){
+        
+        guard let myUrl = URL(string: "http://videostreet.pk/tejori/tjApi/getCategoryData/") else { return }
+        var request = URLRequest(url:myUrl)
+        request.addValue("876564123", forHTTPHeaderField: "X-TJ-APIKEY")
+        request.httpMethod = "POST"// Compose a query string
+        
+        let postString = "category_id=2&category_type_id=2";
+        
+        request.httpBody = postString.data(using: String.Encoding.utf8);
+        
+        URLSession.shared.dataTask(with: request) { data, urlResponse, error in
+            guard let data = data, error == nil, urlResponse != nil else {
+                print("something is wrong")
+                return
+            }
+            print("downloaded")
+            
+            
+            do
+            {
+                let decoder = JSONDecoder()
+                let MarketData = try decoder.decode(Welcome.self, from: data)
+                print(MarketData.data.commodities[0].name)
+                self.ForexArray = MarketData.data.forexRates
+             
+                
+                DispatchQueue.main.async {
+                    self.tableview.reloadData()
+                }
+            } catch {
+                print(error)
+            }
+            }.resume()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayofdata.count
+        return ForexArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
             let cell = Bundle.main.loadNibNamed("ForexRatesTableViewCell", owner: self, options: nil)?.first as! ForexRatesTableViewCell
-            cell.text1.text = arrayofdata[indexPath.row].text1
-            cell.subtext1.text = arrayofdata[indexPath.row].subtext1
-            cell.text2.text = arrayofdata[indexPath.row].text2
-            cell.text3.text = arrayofdata[indexPath.row].text3
-     
-            cell.arrowImage.image = arrayofdata[indexPath.row].arrowIcon
+            cell.text1.text = ForexArray[indexPath.row].longName
+            cell.subtext1.text = ForexArray[indexPath.row].name
+            cell.text2.text = ForexArray[indexPath.row].dataValue
+            cell.text3.text = ForexArray[indexPath.row].todaysChange
+        if ForexArray[indexPath.row].todaysChange < "0"{
+            cell.arrowImage.image  = UIImage(named: "negative")
+             cell.text3.textColor = UIColor.red
+        }else{
+            cell.arrowImage.image  = UIImage(named: "positive")
+        }
+           // cell.arrowImage.image = ForexArray[indexPath.row].arrowIcon
         
             return cell
         
