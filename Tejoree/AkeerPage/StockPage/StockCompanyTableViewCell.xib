@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="351" height="370"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="351" height="369.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="351" height="370"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uo3-bv-PPU">
@@ -361,6 +361,33 @@
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="companyName" destination="wW0-PZ-Aa9" id="vyk-dd-efc"/>
+                <outlet property="currentPrice" destination="mXl-XI-0pN" id="Dda-Ia-D8c"/>
+                <outlet property="divYield1" destination="ZuH-QT-aKT" id="GaD-ta-q0g"/>
+                <outlet property="divYield2" destination="Xrf-zD-kPd" id="hlb-Ta-nNF"/>
+                <outlet property="divYield3" destination="Xl1-i6-s81" id="Ooy-YQ-bx3"/>
+                <outlet property="dps1" destination="ghn-9C-SdC" id="Bnj-aA-Wyp"/>
+                <outlet property="dps2" destination="ipF-iA-zUH" id="V66-Zp-S5c"/>
+                <outlet property="dps3" destination="dUW-p3-Xrv" id="1bs-0g-Ruo"/>
+                <outlet property="dvps1" destination="0Fp-TN-emh" id="2Jf-So-AYf"/>
+                <outlet property="dvps2" destination="fPB-zV-maf" id="ypz-I4-qeV"/>
+                <outlet property="dvps3" destination="DIQ-RB-0Ma" id="JLM-sX-LU4"/>
+                <outlet property="eps1" destination="Xel-VM-62D" id="wDY-IO-OUQ"/>
+                <outlet property="eps2" destination="9Wd-T5-ucd" id="RGE-XM-vfe"/>
+                <outlet property="eps3" destination="vrQ-uE-E4c" id="bJG-AW-ch5"/>
+                <outlet property="pbv1" destination="90j-S1-dvE" id="EUQ-5T-T56"/>
+                <outlet property="pbv2" destination="dLe-FP-gTI" id="N8D-iu-qia"/>
+                <outlet property="pbv3" destination="mir-ZC-nbL" id="OBy-2d-ZnW"/>
+                <outlet property="per1" destination="NRa-bW-Oy5" id="Aqy-2y-UFg"/>
+                <outlet property="per2" destination="YJl-2O-eEk" id="JTv-5B-Y0L"/>
+                <outlet property="per3" destination="YJl-2O-eEk" id="8uS-UU-jer"/>
+                <outlet property="recommend" destination="hip-Vr-vAO" id="XPn-Vg-AVy"/>
+                <outlet property="symbol" destination="vQc-2t-aHu" id="a7e-QJ-znJ"/>
+                <outlet property="targertPrice" destination="ggX-D3-GGG" id="nfv-zY-v23"/>
+                <outlet property="upside" destination="OAn-TD-6ca" id="ewS-S1-l3X"/>
+                <outlet property="yearEnd" destination="xTR-rn-dVg" id="dcC-AR-iP8"/>
+            </connections>
             <point key="canvasLocation" x="40.5" y="215"/>
         </tableViewCell>
     </objects>

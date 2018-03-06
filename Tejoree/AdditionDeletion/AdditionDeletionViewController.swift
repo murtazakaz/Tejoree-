@@ -41,8 +41,8 @@ class AdditionDeletionViewController: UIViewController ,UITableViewDelegate , UI
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailnews = storyboard?.instantiateViewController(withIdentifier: "PerformanceReviewPage")
-        navigationController?.pushViewController( detailnews!, animated: true)
+       // let detailnews = storyboard?.instantiateViewController(withIdentifier: "PerformanceReviewPage")
+        //navigationController?.pushViewController( detailnews!, animated: true)
     }
 
 }

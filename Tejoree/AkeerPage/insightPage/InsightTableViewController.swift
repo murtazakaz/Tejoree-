@@ -19,12 +19,14 @@ struct InsightCellData{
 }
 
 class InsightTableViewController: UITableViewController {
- var arrayofdata = [InsightCellData]()
+    @IBOutlet var insightTableview: UITableView!
+    var InsightDataArray = [Insight]()
+    var rowcount = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        arrayofdata = [InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader"))
-                       ]
+            fetchInsight()
+     /*   InsightDataArray = [InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader")),InsightCellData(cell:1, title:"Protester interrupts Theresa May's keynote Protester interrupts Theresa May's keynote", publishdate: "04-12-2017",publisher: "OIL",analyst:"Awais Aslam", thumbnailimage: #imageLiteral(resourceName: "tableheader"))
+                       ] */
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,23 +35,96 @@ class InsightTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    func fetchInsight(){
+        
+        guard let myUrl = URL(string: "http://videostreet.pk/tejori/tjApi/getCategoryData/") else { return }
+        var request = URLRequest(url:myUrl)
+        request.addValue("876564123", forHTTPHeaderField: "X-TJ-APIKEY")
+        request.httpMethod = "POST"// Compose a query string
+        
+        let postString = "category_id=3&category_type_id=3";
+        
+        request.httpBody = postString.data(using: String.Encoding.utf8);
+        
+        URLSession.shared.dataTask(with: request) { data, urlResponse, error in
+            guard let data = data, error == nil, urlResponse != nil else {
+                print("something is wrong")
+                return
+            }
+            print("downloaded")
+            
+            
+            do
+            {
+                let decoder = JSONDecoder()
+                let insightData = try decoder.decode(Akseer.self, from: data)
+              //  print(insightData.data.insight[0].title)
+                self.InsightDataArray = insightData.data.insight
+                //   self.commoditiesArray = commoditiesres.data
+                //   print(self.commoditiesArray[0].name)
+                DispatchQueue.main.async {
+                  self.insightTableview.reloadData()
+                 //   self.tableView.reloadData()
+                }
+            } catch {
+                print(error)
+            }
+            }.resume()
+    }
+    
   
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return arrayofdata.count
+        if InsightDataArray.count == 0{
+           self.rowcount = 0
+        }
+        else {
+            self.rowcount = InsightDataArray.count
+        }
+         return self.rowcount
+        
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("InsightRowTableViewCell", owner: self, options: nil)?.first as! InsightRowTableViewCell
-        cell.title.text = arrayofdata[indexPath.row].title
-        cell.publishDate.text = arrayofdata[indexPath.row].publishdate
-        cell.publishbyName.text = arrayofdata[indexPath.row].publisher
-        cell.analystName.text = arrayofdata[indexPath.row].analyst
-        cell.thumbnailImage.image = arrayofdata[indexPath.row].thumbnailimage
         
+   //     print("working")
+        cell.title.text = InsightDataArray[indexPath.row].title
+      //  cell.publishDate.text = InsightDataArray[indexPath.row].postDatetime
+        cell.publishbyName.text = InsightDataArray[indexPath.row].categoryName
+        cell.analystName.text = InsightDataArray[indexPath.row].author
+     
+        
+        if let imageURL = URL(string: InsightDataArray[indexPath.row].postImage) {
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: imageURL)
+                if let data = data {
+                    let image = UIImage(data: data)
+                    DispatchQueue.main.async {
+                       cell.thumbnailImage.image = image
+                    }
+                }
+            }
+            
+        }
+        
+        //  cell.banner.image = InsightDataArray[indexPath.row].image
+        let separated = InsightDataArray[indexPath.row].postDatetime.split(separator: " ")
+        
+        if let some = separated.first {
+            let value = String(some)
+            cell.publishDate.text = value//news[indexPath.row].post_datetime
+            // Output: "some"
+        }
+     /*   if news[indexPath.row].impact == "-"{
+            cell.name2.text = "Negative"//news[indexPath.row].impact
+            cell.name2.textColor = UIColor.red
+        }else {
+            cell.name2.text = "Positive"
+        }
+       */
         // Configure the cell...
 
         return cell
