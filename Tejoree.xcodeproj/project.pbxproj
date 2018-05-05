@@ -8,15 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		18AC1A849A5DD2F8CBC9119E /* Pods_Tejoree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A1E3CD2D2C66BD4C3C226F /* Pods_Tejoree.framework */; };
+		FA034CBC2073EE74006DE2A9 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA034CBB2073EE74006DE2A9 /* credentials.plist */; };
+		FA381D3F2070F9AF006E6E80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA381D3E2070F9AF006E6E80 /* Assets.xcassets */; };
+		FA381D4320712000006E6E80 /* FacebookLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA381D4220712000006E6E80 /* FacebookLoginManager.swift */; };
 		FA46EE771FDD7A010001D5BB /* AdditionDeletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46EE761FDD7A010001D5BB /* AdditionDeletionViewController.swift */; };
 		FA46EE7C1FDD7A310001D5BB /* AdditionDeletionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46EE7A1FDD7A310001D5BB /* AdditionDeletionTableViewCell.swift */; };
 		FA46EE7D1FDD7A310001D5BB /* AdditionDeletionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA46EE7B1FDD7A310001D5BB /* AdditionDeletionTableViewCell.xib */; };
+		FA627DA2208FC4CA006D78FD /* insightNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA627DA1208FC4CA006D78FD /* insightNews.swift */; };
 		FA639F041FD749D900F7CBA0 /* HighConvictionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA639F021FD749D900F7CBA0 /* HighConvictionTableViewCell.swift */; };
 		FA639F051FD749D900F7CBA0 /* HighConvictionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA639F031FD749D900F7CBA0 /* HighConvictionTableViewCell.xib */; };
 		FA6867A01FC3335600C2F9FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68679F1FC3335600C2F9FF /* AppDelegate.swift */; };
 		FA6867A21FC3335600C2F9FF /* AkseerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6867A11FC3335600C2F9FF /* AkseerViewController.swift */; };
 		FA6867A51FC3335600C2F9FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6867A31FC3335600C2F9FF /* Main.storyboard */; };
-		FA6867A71FC3335600C2F9FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA6867A61FC3335600C2F9FF /* Assets.xcassets */; };
 		FA6867AA1FC3335600C2F9FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6867A81FC3335600C2F9FF /* LaunchScreen.storyboard */; };
 		FA6F59A5204F06AA000655A6 /* HighConvictionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F59A4204F06AA000655A6 /* HighConvictionViewController.swift */; };
 		FA6F59A8204F27AA000655A6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F59A7204F27AA000655A6 /* LoginViewController.swift */; };
@@ -55,16 +58,19 @@
 		76D10F7F2B033ACE8D59C9A1 /* Pods-Tejoree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tejoree.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tejoree/Pods-Tejoree.release.xcconfig"; sourceTree = "<group>"; };
 		92A1E3CD2D2C66BD4C3C226F /* Pods_Tejoree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tejoree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B24CF7F74D315B1A2ECCE1F4 /* Pods-Tejoree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tejoree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tejoree/Pods-Tejoree.debug.xcconfig"; sourceTree = "<group>"; };
+		FA034CBB2073EE74006DE2A9 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
+		FA381D3E2070F9AF006E6E80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA381D4220712000006E6E80 /* FacebookLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginManager.swift; sourceTree = "<group>"; };
 		FA46EE761FDD7A010001D5BB /* AdditionDeletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionDeletionViewController.swift; sourceTree = "<group>"; };
 		FA46EE7A1FDD7A310001D5BB /* AdditionDeletionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionDeletionTableViewCell.swift; sourceTree = "<group>"; };
 		FA46EE7B1FDD7A310001D5BB /* AdditionDeletionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdditionDeletionTableViewCell.xib; sourceTree = "<group>"; };
+		FA627DA1208FC4CA006D78FD /* insightNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = insightNews.swift; sourceTree = "<group>"; };
 		FA639F021FD749D900F7CBA0 /* HighConvictionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighConvictionTableViewCell.swift; sourceTree = "<group>"; };
 		FA639F031FD749D900F7CBA0 /* HighConvictionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HighConvictionTableViewCell.xib; sourceTree = "<group>"; };
 		FA68679C1FC3335600C2F9FF /* Tejoree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tejoree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA68679F1FC3335600C2F9FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA6867A11FC3335600C2F9FF /* AkseerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AkseerViewController.swift; sourceTree = "<group>"; };
 		FA6867A41FC3335600C2F9FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FA6867A61FC3335600C2F9FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA6867A91FC3335600C2F9FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA6867AB1FC3335600C2F9FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA6F59A4204F06AA000655A6 /* HighConvictionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighConvictionViewController.swift; sourceTree = "<group>"; };
@@ -142,10 +148,10 @@
 		FA6867931FC3335600C2F9FF = {
 			isa = PBXGroup;
 			children = (
-				FA68679E1FC3335600C2F9FF /* Tejoree */,
-				FA68679D1FC3335600C2F9FF /* Products */,
-				8F2998F76088DA7453795552 /* Pods */,
 				EA005EBD4802EF3CBC9C809C /* Frameworks */,
+				8F2998F76088DA7453795552 /* Pods */,
+				FA68679D1FC3335600C2F9FF /* Products */,
+				FA68679E1FC3335600C2F9FF /* Tejoree */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,6 +166,7 @@
 		FA68679E1FC3335600C2F9FF /* Tejoree */ = {
 			isa = PBXGroup;
 			children = (
+				FA034CBB2073EE74006DE2A9 /* credentials.plist */,
 				FA6F59A6204F2794000655A6 /* login */,
 				FAC8238F1FE0730900A6C366 /* ForgetPasswordPage */,
 				FAC8238E1FE072FB00A6C366 /* SignupPage */,
@@ -168,12 +175,13 @@
 				FACE8C641FD7363C0068FED5 /* AkeerPage */,
 				FA68679F1FC3335600C2F9FF /* AppDelegate.swift */,
 				FA6867A11FC3335600C2F9FF /* AkseerViewController.swift */,
+				FA381D3E2070F9AF006E6E80 /* Assets.xcassets */,
 				FA6867A31FC3335600C2F9FF /* Main.storyboard */,
-				FA6867A61FC3335600C2F9FF /* Assets.xcassets */,
 				FA6867A81FC3335600C2F9FF /* LaunchScreen.storyboard */,
 				FA6867AB1FC3335600C2F9FF /* Info.plist */,
 				FADDA0651FD1954300559026 /* NewsPage */,
 				FADDA0661FD1957100559026 /* MarketPage */,
+				FA381D4220712000006E6E80 /* FacebookLoginManager.swift */,
 			);
 			path = Tejoree;
 			sourceTree = "<group>";
@@ -227,6 +235,7 @@
 				FACE8C6A1FD736CC0068FED5 /* InsightTableViewController.swift */,
 				FACE8C701FD73F070068FED5 /* InsightRowTableViewCell.swift */,
 				FACE8C711FD73F070068FED5 /* InsightRowTableViewCell.xib */,
+				FA627DA1208FC4CA006D78FD /* insightNews.swift */,
 			);
 			path = insightPage;
 			sourceTree = "<group>";
@@ -357,10 +366,11 @@
 				FA8B004A1FD0AE4900B839A0 /* TableViewCell2.xib in Resources */,
 				FA6867AA1FC3335600C2F9FF /* LaunchScreen.storyboard in Resources */,
 				FA94F87E1FDD4A2A00B05978 /* LIBORTableViewCell.xib in Resources */,
-				FA6867A71FC3335600C2F9FF /* Assets.xcassets in Resources */,
 				FACE8C731FD73F070068FED5 /* InsightRowTableViewCell.xib in Resources */,
+				FA381D3F2070F9AF006E6E80 /* Assets.xcassets in Resources */,
 				FA6867A51FC3335600C2F9FF /* Main.storyboard in Resources */,
 				FA94F8861FDD576100B05978 /* ForexRatesTableViewCell.xib in Resources */,
+				FA034CBC2073EE74006DE2A9 /* credentials.plist in Resources */,
 				FA8593BF1FDD609F009F0E81 /* StockCompanyTableViewCell.xib in Resources */,
 				FA94F8821FDD4A4D00B05978 /* PKRVTableViewCell.xib in Resources */,
 				FAAE1DEF1FC5D73600F1096D /* TableViewCell1.xib in Resources */,
@@ -381,10 +391,26 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Tejoree/Pods-Tejoree-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,9 +442,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Tejoree/Pods-Tejoree-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -435,6 +464,7 @@
 				FA6F59A8204F27AA000655A6 /* LoginViewController.swift in Sources */,
 				FACE8C6B1FD736CC0068FED5 /* InsightTableViewController.swift in Sources */,
 				FACE8C721FD73F070068FED5 /* InsightRowTableViewCell.swift in Sources */,
+				FA381D4320712000006E6E80 /* FacebookLoginManager.swift in Sources */,
 				FA8B00491FD0AE4900B839A0 /* TableViewCell2.swift in Sources */,
 				FA6867A21FC3335600C2F9FF /* AkseerViewController.swift in Sources */,
 				FA94F87D1FDD4A2A00B05978 /* LIBORTableViewCell.swift in Sources */,
@@ -457,6 +487,7 @@
 				FAF24A4E1FD9EB4000E12750 /* KIBORTableViewCell1.swift in Sources */,
 				FAC823911FE0732C00A6C366 /* SignupViewController.swift in Sources */,
 				FAC823931FE0733B00A6C366 /* ForgetPasswordViewController.swift in Sources */,
+				FA627DA2208FC4CA006D78FD /* insightNews.swift in Sources */,
 				FA8593C11FDD6AAF009F0E81 /* StockRateViewController.swift in Sources */,
 				FAF97426201BDFE7006692F2 /* NewsDetailViewController.swift in Sources */,
 			);
@@ -597,11 +628,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PGV96RNN7X;
+				DEVELOPMENT_TEAM = 869C8PLP43;
 				INFOPLIST_FILE = Tejoree/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = puzzlerz.Tejoree;
+				PRODUCT_BUNDLE_IDENTIFIER = com.puzzlerz.akseerresearch.akseer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -614,11 +645,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PGV96RNN7X;
+				DEVELOPMENT_TEAM = 869C8PLP43;
 				INFOPLIST_FILE = Tejoree/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = puzzlerz.Tejoree;
+				PRODUCT_BUNDLE_IDENTIFIER = com.puzzlerz.akseerresearch.akseer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

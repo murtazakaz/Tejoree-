@@ -21,7 +21,8 @@ class MoneyMarketViewController: UIViewController,UITableViewDelegate , UITableV
     var selectedtab = 0
     var KiborArray = [KiborDatum]()
     var LiborArray = [LiborDatum]()
-     var PKRVArray = [PkrvDatum]()
+     var PKRVArray = [DataDatum]()
+    var PKRVdate = [String]()
     
     @IBOutlet weak var MarketDropDown: UIPickerView!
     @IBOutlet weak var tableview: UITableView!
@@ -71,10 +72,11 @@ class MoneyMarketViewController: UIViewController,UITableViewDelegate , UITableV
             {
                 let decoder = JSONDecoder()
                 let MarketData = try decoder.decode(Welcome.self, from: data)
-                print(MarketData.data.commodities[0].name)
-                self.KiborArray = MarketData.data.moneyMarket.kibor.data
-               self.LiborArray = MarketData.data.moneyMarket.libor.data
-                self.PKRVArray = MarketData.data.moneyMarket.pkrv.data
+                print(MarketData.data?.commodities![0].name)
+                self.KiborArray = (MarketData.data?.moneyMarket?.kibor?.data!)!
+                self.LiborArray = (MarketData.data?.moneyMarket?.libor?.data!)!
+                self.PKRVArray = (MarketData.data?.moneyMarket?.pkrv?.data?.data)!
+                self.PKRVdate = (MarketData.data?.moneyMarket?.pkrv?.data?.dates)!
               
                 DispatchQueue.main.async {
                       self.tableview.reloadData()
@@ -127,17 +129,17 @@ class MoneyMarketViewController: UIViewController,UITableViewDelegate , UITableV
             tableTitle3.text = ""
             tableTitle4.text = "Bid/offer"
             
-            if KiborArray[indexPath.row].frequency == "w"{
-                cell.text1.text = KiborArray[indexPath.row].tenor + " Week"
+            if KiborArray[indexPath.row].frequency!.rawValue == "w"{
+                cell.text1.text = KiborArray[indexPath.row].tenor! + " Week"
                 
-            }else if KiborArray[indexPath.row].frequency == "m"{
-                cell.text1.text = KiborArray[indexPath.row].tenor + " Month"
+            }else if KiborArray[indexPath.row].frequency!.rawValue == "m"{
+                cell.text1.text = KiborArray[indexPath.row].tenor! + " Month"
             }else{
-                cell.text1.text = KiborArray[indexPath.row].tenor + " Year"
+                cell.text1.text = KiborArray[indexPath.row].tenor! + " Year"
             }
             
        
-        cell.text2.text = KiborArray[indexPath.row].bid + "/" + KiborArray[indexPath.row].offer
+            cell.text2.text = KiborArray[indexPath.row].bid! + "/" + KiborArray[indexPath.row].offer!
             return cell
         }
         else if selectedtab == 1 {
@@ -148,26 +150,40 @@ class MoneyMarketViewController: UIViewController,UITableViewDelegate , UITableV
             tableTitle4.text = "Bid/offer"
           //  cell.text1.text = LiborArray[indexPath.row].text1
             if LiborArray[indexPath.row].frequency == "w"{
-                cell2.text1.text = LiborArray[indexPath.row].tenor + " Week"
+                cell2.text1.text = LiborArray[indexPath.row].tenor! + " Week"
                 
             }else if LiborArray[indexPath.row].frequency == "m"{
-                cell2.text1.text = LiborArray[indexPath.row].tenor + " Month"
+                cell2.text1.text = LiborArray[indexPath.row].tenor! + " Month"
             }else if LiborArray[indexPath.row].frequency == "y"{
-                cell2.text1.text = LiborArray[indexPath.row].tenor + " Year"
+                cell2.text1.text = LiborArray[indexPath.row].tenor! + " Year"
             }else{
-                cell2.text1.text = LiborArray[indexPath.row].tenor + " on"
+                cell2.text1.text = LiborArray[indexPath.row].tenor! + " on"
             }
             cell2.text2.text = LiborArray[indexPath.row].rate
             return cell2
         }
         else {
             let cell3 = Bundle.main.loadNibNamed("PKRVTableViewCell", owner: self, options: nil)?.first as! PKRVTableViewCell
+            
+            let inputFormatter = DateFormatter()
+            inputFormatter.dateFormat = "YYYY-MM-dd"
+            let showDate = inputFormatter.date(from: PKRVdate[0])
+            inputFormatter.dateFormat = "dd MMM"
+            let resultString = inputFormatter.string(from: showDate!)
+            print(resultString)
+            
             tableTitle1.text = "PKRV"
-            tableTitle2.text = ""//"29 SEP"
-            tableTitle3.text = ""//"28 SEP"
+            tableTitle2.text = resultString //PKRVdate[0]//"29 SEP"
+            let inputFormatter1 = DateFormatter()
+            inputFormatter1.dateFormat = "YYYY-MM-dd"
+            let showDate1 = inputFormatter1.date(from: PKRVdate[1])
+            inputFormatter1.dateFormat = "dd MMM"
+            let resultString1 = inputFormatter.string(from: showDate1!)
+            print(resultString1)
+            tableTitle3.text = resultString1 //"28 SEP"
             tableTitle4.text = "Chg(bps)"
            //converting duration to long
-            if PKRVArray[indexPath.row].frequency == "w"{
+         /*   if PKRVArray[indexPath.row].newTenor == "w"{
                  cell3.text1.text = PKRVArray[indexPath.row].tenor + " Week"
                 
             }else if PKRVArray[indexPath.row].frequency == "m"{
@@ -176,11 +192,16 @@ class MoneyMarketViewController: UIViewController,UITableViewDelegate , UITableV
                 cell3.text1.text = PKRVArray[indexPath.row].tenor + " Year"
             }else{
                  cell3.text1.text = PKRVArray[indexPath.row].tenor + " On"
-            }
+            } */
+            cell3.text1.text = PKRVArray[indexPath.row].newTenor 
            // cell3.text1.text = PKRVArray[indexPath.row].tenor
-            cell3.text2.text = PKRVArray[indexPath.row].midRate
+            cell3.text2.text = PKRVArray[indexPath.row].newChange
+            
+            cell3.oldrate.text = PKRVArray[indexPath.row].oldMidrate
+            cell3.newrate.text = PKRVArray[indexPath.row].newMidrate
+            
            //if change < 0 display negative
-            if PKRVArray[indexPath.row].change < "0"{
+            if PKRVArray[indexPath.row].newChange! < "0"{
                 cell3.arrowImage.image = UIImage(named: "negative")
                 
             }else{

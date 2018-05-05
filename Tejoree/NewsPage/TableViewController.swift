@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+/*
 class News : Codable {
     let data: [newsArray]
     
@@ -37,6 +37,104 @@ class newsArray: Codable {
         self.impact = impact
     }
 }
+*/
+class NewsData: Codable {
+    let data: [Datum]
+    let isLogin: Bool
+    
+    enum CodingKeys: String, CodingKey {
+        case data
+        case isLogin = "is_login"
+    }
+    
+    init(data: [Datum], isLogin: Bool) {
+        self.data = data
+        self.isLogin = isLogin
+    }
+}
+
+class Datum: Codable {
+    let id, title, description, categoryName: String
+    let postDatetime, author: String
+    let newsBanner: String?
+    let impact, descriptionHTML: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id, title, description
+        case categoryName = "category_name"
+        case postDatetime = "post_datetime"
+        case author
+        case newsBanner = "post_image"
+        case impact
+        case descriptionHTML = "description_html"
+    }
+    
+    init(id: String, title: String, description: String, categoryName: String, postDatetime: String, author: String, newsBanner: String?, impact: String, descriptionHTML: String) {
+        self.id = id
+        self.title = title
+        self.description = description
+        self.categoryName = categoryName
+        self.postDatetime = postDatetime
+        self.author = author
+        self.newsBanner = newsBanner
+        self.impact = impact
+        self.descriptionHTML = descriptionHTML
+    }
+}
+
+// MARK: Convenience initializers
+
+extension NewsData {
+    convenience init(data: Data) throws {
+        let me = try JSONDecoder().decode(NewsData.self, from: data)
+        self.init(data: me.data, isLogin: me.isLogin)
+    }
+    
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
+    }
+    
+    convenience init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
+    }
+    
+    func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
+    }
+    
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
+    }
+}
+
+extension Datum {
+    convenience init(data: Data) throws {
+        let me = try JSONDecoder().decode(Datum.self, from: data)
+        self.init(id: me.id, title: me.title, description: me.description, categoryName: me.categoryName, postDatetime: me.postDatetime, author: me.author, newsBanner: me.newsBanner, impact: me.impact, descriptionHTML: me.descriptionHTML)
+    }
+    
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
+    }
+    
+    convenience init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
+    }
+    
+    func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
+    }
+    
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
+    }
+}
 
 
 
@@ -44,7 +142,7 @@ class TableViewController: UITableViewController {
     
    
    
-   private var news = [newsArray]()
+   private var news = [Datum]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +173,7 @@ class TableViewController: UITableViewController {
             }.resume()
     } */
     func post(){
+        let sv = UIViewController.displaySpinner(onView: self.view)
         guard let myUrl = URL(string: "http://videostreet.pk/tejori/tjApi/getCategoryData/") else { return }
         var request = URLRequest(url:myUrl)
         request.addValue("876564123", forHTTPHeaderField: "X-TJ-APIKEY")
@@ -86,17 +185,25 @@ class TableViewController: UITableViewController {
         
         URLSession.shared.dataTask(with: request) { data, urlResponse, error in
             guard let data = data, error == nil, urlResponse != nil else {
+                 UIViewController.removeSpinner(spinner: sv)
                 print("something is wrong")
+                let alertController = UIAlertController(title: "", message:
+                    "Slow or No Internet", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.default,handler: nil))
+                
+                self.present(alertController, animated: true, completion: nil)
                 return
             }
+             UIViewController.removeSpinner(spinner: sv)
             print("downloaded")
+            print(data)
             
             do
             {
                 let decoder = JSONDecoder()
-                let newsdata = try decoder.decode(News.self, from: data)
+                let newsdata = try decoder.decode(NewsData.self, from: data)
                 self.news = newsdata.data
-                //print(self.news[0].id)
+                print(self.news[0].id)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -127,11 +234,16 @@ class TableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if news[indexPath.row].id == "1"{
-            
+        print(indexPath.row)
+        
+      //  if news[indexPath.row].id == "1"{
+         if indexPath.row == 0{
             let cell = Bundle.main.loadNibNamed("TableViewCell1", owner: self, options: nil)?.first as! TableViewCell1
-            
-            if let imageURL = URL(string: news[indexPath.row].post_image) {
+            if news[indexPath.row].newsBanner == nil{
+                     cell.banner.image = #imageLiteral(resourceName: "no-image")
+            }
+            else {
+            if let imageURL = URL(string: news[indexPath.row].newsBanner!) {
                 DispatchQueue.global().async {
                     let data = try? Data(contentsOf: imageURL)
                     if let data = data {
@@ -143,9 +255,10 @@ class TableViewController: UITableViewController {
                 }
                 
             }
+            }
             
           //  cell.banner.image = arrayofdata[indexPath.row].image
-            let separated = news[indexPath.row].post_datetime.split(separator: " ")
+            let separated = news[indexPath.row].postDatetime.split(separator: " ")
             
             if let some = separated.first {
                 let value = String(some)
@@ -159,7 +272,7 @@ class TableViewController: UITableViewController {
                 cell.name2.text = "Positive"
                 }
             
-            cell.name1.text = news[indexPath.row].category_name
+            cell.name1.text = news[indexPath.row].categoryName
            // cell.name2.text = news[indexPath.row].impact
             cell.title.text = news[indexPath.row].title
             cell.detail.text = news[indexPath.row].description
@@ -169,7 +282,13 @@ class TableViewController: UITableViewController {
         } else {
             
             let cell2 = Bundle.main.loadNibNamed("TableViewCell2", owner: self, options: nil)?.first as! TableViewCell2
-                if let imageURL = URL(string: news[indexPath.row].post_image) {
+         
+            if news[indexPath.row].newsBanner == nil{
+                cell2.thumbnail.image = #imageLiteral(resourceName: "no-image")
+                
+            }
+            else {
+                if let imageURL = URL(string: (news[indexPath.row].newsBanner)!) {
                     DispatchQueue.global().async {
                         let data = try? Data(contentsOf: imageURL)
                         if let data = data {
@@ -181,8 +300,8 @@ class TableViewController: UITableViewController {
                         }
                     }
                 }
-            
-            let separated = news[indexPath.row].post_datetime.split(separator: " ")
+            }
+            let separated = news[indexPath.row].postDatetime.split(separator: " ")
             
             if let some = separated.first {
                 let value = String(some)
@@ -198,7 +317,7 @@ class TableViewController: UITableViewController {
                 
             }
             
-            cell2.type1.text = news[indexPath.row].category_name
+            cell2.type1.text = news[indexPath.row].categoryName
             cell2.Title.text = news[indexPath.row].title
             
             return cell2
@@ -208,7 +327,7 @@ class TableViewController: UITableViewController {
             
         }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if news[indexPath.row].id == "1"{
+        if indexPath.row == 0{
            
             return 338        }
         else{
@@ -220,10 +339,15 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailnews = storyboard?.instantiateViewController(withIdentifier: "newsinsights") as! NewsDetailViewController
-        detailnews.category = news[indexPath.row].category_name
+        detailnews.category = news[indexPath.row].categoryName
         detailnews.impact = news[indexPath.row].impact
-        detailnews.date = news[indexPath.row].post_datetime
-        detailnews.banner = news[indexPath.row].post_image
+        detailnews.date = news[indexPath.row].postDatetime
+        if news[indexPath.row].newsBanner == nil {
+        
+        }
+        else {
+        detailnews.banner = news[indexPath.row].newsBanner!
+        }
         detailnews.titles = news[indexPath.row].title
         detailnews.descriptions = news[indexPath.row].description
         navigationController?.pushViewController( detailnews, animated: true)

@@ -17,7 +17,7 @@ struct ForexData{
 }
 class ForexRatesViewController: UIViewController,UITableViewDelegate , UITableViewDataSource, UIPickerViewDataSource , UIPickerViewDelegate {
 
-    var ForexArray = [CommodityDatum]()
+    var ForexArray = [ForexRate]()
     @IBOutlet weak var MarketDropDown: UIPickerView!
     var pagelist = ["Market Data Snapshot","Money Market","Forex Rates"]
     @IBOutlet weak var dropdownValuetxt: UILabel!
@@ -34,7 +34,7 @@ class ForexRatesViewController: UIViewController,UITableViewDelegate , UITableVi
       
     }
     func fetchCommodities(){
-        
+          let sv = UIViewController.displaySpinner(onView: self.view)
         guard let myUrl = URL(string: "http://videostreet.pk/tejori/tjApi/getCategoryData/") else { return }
         var request = URLRequest(url:myUrl)
         request.addValue("876564123", forHTTPHeaderField: "X-TJ-APIKEY")
@@ -46,18 +46,19 @@ class ForexRatesViewController: UIViewController,UITableViewDelegate , UITableVi
         
         URLSession.shared.dataTask(with: request) { data, urlResponse, error in
             guard let data = data, error == nil, urlResponse != nil else {
+                 UIViewController.removeSpinner(spinner: sv)
                 print("something is wrong")
                 return
             }
             print("downloaded")
             
-            
+              UIViewController.removeSpinner(spinner: sv)
             do
             {
                 let decoder = JSONDecoder()
                 let MarketData = try decoder.decode(Welcome.self, from: data)
-                print(MarketData.data.commodities[0].name)
-                self.ForexArray = MarketData.data.forexRates
+                print(MarketData.data?.commodities![0].name)
+                self.ForexArray = (MarketData.data?.forexRates!)!
              
                 
                 DispatchQueue.main.async {
@@ -83,7 +84,7 @@ class ForexRatesViewController: UIViewController,UITableViewDelegate , UITableVi
             cell.subtext1.text = ForexArray[indexPath.row].name
             cell.text2.text = ForexArray[indexPath.row].dataValue
             cell.text3.text = ForexArray[indexPath.row].todaysChange
-        if ForexArray[indexPath.row].todaysChange < "0"{
+        if ForexArray[indexPath.row].todaysChange! < "0"{
             cell.arrowImage.image  = UIImage(named: "negative")
              cell.text3.textColor = UIColor.red
         }else{

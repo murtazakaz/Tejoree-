@@ -8,13 +8,19 @@
 
 import UIKit
 
-class HighConvictionViewController: UIViewController, UITableViewDelegate , UITableViewDataSource{
+class HighConvictionViewController: UIViewController, UITableViewDelegate , UITableViewDataSource,UIPickerViewDataSource , UIPickerViewDelegate{
+   
     
     
-
+    var pagelist = ["HCP","Addition Deletion","Performance Review"]
+    @IBOutlet weak var dropdowntext: UILabel!
+    @IBOutlet weak var dropdown: UIPickerView!
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        dropdown.isHidden = true
+        dropdowntext.text = "HCP"
         // Do any additional setup after loading the view.
     }
 
@@ -53,5 +59,32 @@ class HighConvictionViewController: UIViewController, UITableViewDelegate , UITa
         // Pass the selected object to the new view controller.
     }
     */
-
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pagelist.count
+    }
+    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pagelist[row]
+    }
+    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        dropdowntext.text = pagelist[row]
+        dropdown.isHidden = true
+        if(dropdowntext.text == "HCP"){}
+        if(dropdowntext.text == "Addition Deletion"){
+            let additionpage = storyboard?.instantiateViewController(withIdentifier: "addition")
+            navigationController?.pushViewController( additionpage!, animated: true)
+        }
+        if(dropdowntext.text == "Performance Review"){
+            let PerformanceReviewPage = storyboard?.instantiateViewController(withIdentifier: "PerformanceReviewPage")
+            navigationController?.pushViewController( PerformanceReviewPage!, animated: true)
+        }
+        
+        
+    }
+    
+    @IBAction func opendropdown(_ sender: Any) {
+        dropdown.isHidden = false;
+    }
 }

@@ -138,7 +138,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         let mob = "&mobile="+self.mobilecode.text!+self.mobilenumber.text!;
         let pass = "&password="+self.password.text!
         let em = "&email="+self.email.text!;
-      
+        let sv = UIViewController.displaySpinner(onView: self.view)
         guard let myUrl = URL(string: "http://videostreet.pk/tejori/tjApi/getSignUp/") else { return }
         var request = URLRequest(url:myUrl)
         request.addValue("876564123", forHTTPHeaderField: "X-TJ-APIKEY")
@@ -150,9 +150,16 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
 print(request)
         URLSession.shared.dataTask(with: request) { data, urlResponse, error in
             guard let data = data, error == nil, urlResponse != nil else {
+              UIViewController.removeSpinner(spinner: sv)
+                let alertController = UIAlertController(title: "", message:
+                    "Slow or No Internet", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.default,handler: nil))
+                
+                self.present(alertController, animated: true, completion: nil)
                 print("something is wrong")
                 return
             }
+            UIViewController.removeSpinner(spinner: sv)
             print("signup")
             print(data)
             

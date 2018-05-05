@@ -7,67 +7,26 @@
 //
 
 import UIKit
-/*class CommoditiesData : Codable {
-    let data: [Commodities]
-    
-    init(data: [Commodities]) {
-        self.data = data
-    }
-}
-class Commodities: Codable {
-    
-    let id: String
-    let name: String
-    let data: [Chemical]
-    
-    
-    init( id: String, title: String, data: [Chemical]) {
-        self.id = id
-        self.name = title
-        self.data = data
-    
-    }
-}
-class Chemical: Codable {
-    
-    let name: String
-    let long_name: String
-    let data_value: String
-    let date : String
-    let todays_change: String
-    let impact: String
-    
-    
-    init( name: String, long_name: String, data_value: String, date: String , todays_change: String, impact: String) {
-        self.name = name
-        self.long_name = long_name
-        self.data_value = data_value
-        self.date = date
-        self.todays_change =  todays_change
-        self.impact = impact
-        
-    }
-} */
 class Welcome: Codable {
-    let data: PurpleData
-    let isLogin: Bool
+    let data: WelcomeData?
+    let isLogin: Bool?
     
     enum CodingKeys: String, CodingKey {
         case data
         case isLogin = "is_login"
     }
     
-    init(data: PurpleData, isLogin: Bool) {
+    init(data: WelcomeData?, isLogin: Bool?) {
         self.data = data
         self.isLogin = isLogin
     }
 }
 
-class PurpleData: Codable {
-    let categories: [Category]
-    let commodities: [Commodity]
-    let forexRates: [CommodityDatum]
-    let moneyMarket: MoneyMarket
+class WelcomeData: Codable {
+    let categories: [Category]?
+    let commodities: [Commodity]?
+    let forexRates: [ForexRate]?
+    let moneyMarket: MoneyMarket?
     
     enum CodingKeys: String, CodingKey {
         case categories, commodities
@@ -75,7 +34,7 @@ class PurpleData: Codable {
         case moneyMarket = "money-market"
     }
     
-    init(categories: [Category], commodities: [Commodity], forexRates: [CommodityDatum], moneyMarket: MoneyMarket) {
+    init(categories: [Category]?, commodities: [Commodity]?, forexRates: [ForexRate]?, moneyMarket: MoneyMarket?) {
         self.categories = categories
         self.commodities = commodities
         self.forexRates = forexRates
@@ -84,28 +43,29 @@ class PurpleData: Codable {
 }
 
 class Category: Codable {
-    let name, slug: String
+    let name, slug: String?
     
-    init(name: String, slug: String) {
+    init(name: String?, slug: String?) {
         self.name = name
         self.slug = slug
     }
 }
 
 class Commodity: Codable {
-    let id, name: String
-    let data: [CommodityDatum]
+    let id, name: String?
+    let data: [ForexRate]?
     
-    init(id: String, name: String, data: [CommodityDatum]) {
+    init(id: String?, name: String?, data: [ForexRate]?) {
         self.id = id
         self.name = name
         self.data = data
     }
 }
 
-class CommodityDatum: Codable {
-    let name, longName, dataValue, date: String
-    let todaysChange, imapact: String
+class ForexRate: Codable {
+    let name, longName, dataValue, date: String?
+    let todaysChange: String?
+    let imapact: String?
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -116,7 +76,7 @@ class CommodityDatum: Codable {
         case imapact
     }
     
-    init(name: String, longName: String, dataValue: String, date: String, todaysChange: String, imapact: String) {
+    init(name: String?, longName: String?, dataValue: String?, date: String?, todaysChange: String?, imapact: String?) {
         self.name = name
         self.longName = longName
         self.dataValue = dataValue
@@ -126,13 +86,18 @@ class CommodityDatum: Codable {
     }
 }
 
+enum Imapact: String, Codable {
+    case empty = "+"
+    case imapact = "-"
+}
+
 class MoneyMarket: Codable {
-    let categories: [Category]
-    let kibor: Kibor
-    let libor: Libor
-    let pkrv: Pkrv
+    let categories: [Category]?
+    let kibor: Kibor?
+    let libor: Libor?
+    let pkrv: Pkrv?
     
-    init(categories: [Category], kibor: Kibor, libor: Libor, pkrv: Pkrv) {
+    init(categories: [Category]?, kibor: Kibor?, libor: Libor?, pkrv: Pkrv?) {
         self.categories = categories
         self.kibor = kibor
         self.libor = libor
@@ -141,19 +106,20 @@ class MoneyMarket: Codable {
 }
 
 class Kibor: Codable {
-    let name: String
-    let data: [KiborDatum]
+    let name: String?
+    let data: [KiborDatum]?
     
-    init(name: String, data: [KiborDatum]) {
+    init(name: String?, data: [KiborDatum]?) {
         self.name = name
         self.data = data
     }
 }
 
 class KiborDatum: Codable {
-    let tenor, bid, offer, frequency: String
+    let tenor, bid, offer: String?
+    let frequency: Frequency?
     
-    init(tenor: String, bid: String, offer: String, frequency: String) {
+    init(tenor: String?, bid: String?, offer: String?, frequency: Frequency?) {
         self.tenor = tenor
         self.bid = bid
         self.offer = offer
@@ -161,20 +127,26 @@ class KiborDatum: Codable {
     }
 }
 
+enum Frequency: String, Codable {
+    case m = "m"
+    case w = "w"
+    case y = "y"
+}
+
 class Libor: Codable {
-    let name: String
-    let data: [LiborDatum]
+    let name: String?
+    let data: [LiborDatum]?
     
-    init(name: String, data: [LiborDatum]) {
+    init(name: String?, data: [LiborDatum]?) {
         self.name = name
         self.data = data
     }
 }
 
 class LiborDatum: Codable {
-    let tenor, rate, frequency: String
+    let tenor, rate, frequency: String?
     
-    init(tenor: String, rate: String, frequency: String) {
+    init(tenor: String?, rate: String?, frequency: String?) {
         self.tenor = tenor
         self.rate = rate
         self.frequency = frequency
@@ -182,372 +154,399 @@ class LiborDatum: Codable {
 }
 
 class Pkrv: Codable {
-    let name: String
-    let data: [PkrvDatum]
+    let name: String?
+    let data: PkrvData?
     
-    init(name: String, data: [PkrvDatum]) {
+    init(name: String?, data: PkrvData?) {
         self.name = name
         self.data = data
     }
 }
 
-class PkrvDatum: Codable {
-    let tenor, midRate, change, frequency: String
+class PkrvData: Codable {
+    let dates: [String]?
+    let data: [DataDatum]?
+    
+    init(dates: [String]?, data: [DataDatum]?) {
+        self.dates = dates
+        self.data = data
+    }
+}
+
+class DataDatum: Codable {
+    let oldDate, newDate, oldMidrate, newMidrate: String?
+    let oldChange, newChange, oldTenor, newTenor: String?
     
     enum CodingKeys: String, CodingKey {
-        case tenor
-        case midRate = "mid_rate"
-        case change, frequency
+        case oldDate = "old_date"
+        case newDate = "new_date"
+        case oldMidrate = "old_midrate"
+        case newMidrate = "new_midrate"
+        case oldChange = "old_change"
+        case newChange = "new_change"
+        case oldTenor = "old_tenor"
+        case newTenor = "new_tenor"
     }
     
-    init(tenor: String, midRate: String, change: String, frequency: String) {
-        self.tenor = tenor
-        self.midRate = midRate
-        self.change = change
-        self.frequency = frequency
+    init(oldDate: String?, newDate: String?, oldMidrate: String?, newMidrate: String?, oldChange: String?, newChange: String?, oldTenor: String?, newTenor: String?) {
+        self.oldDate = oldDate
+        self.newDate = newDate
+        self.oldMidrate = oldMidrate
+        self.newMidrate = newMidrate
+        self.oldChange = oldChange
+        self.newChange = newChange
+        self.oldTenor = oldTenor
+        self.newTenor = newTenor
     }
 }
 
 // MARK: Convenience initializers
 
 extension Welcome {
-    convenience init?(data: Data) {
-        guard let me = try? JSONDecoder().decode(Welcome.self, from: data) else { return nil }
+    convenience init(data: Data) throws {
+        let me = try JSONDecoder().decode(Welcome.self, from: data)
         self.init(data: me.data, isLogin: me.isLogin)
     }
     
-    convenience init?(_ json: String, using encoding: String.Encoding = .utf8) {
-        guard let data = json.data(using: encoding) else { return nil }
-        self.init(data: data)
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
     }
     
-    convenience init?(fromURL url: String) {
-        guard let url = URL(string: url) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        self.init(data: data)
+    convenience init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
     }
     
-    var jsonData: Data? {
-        return try? JSONEncoder().encode(self)
+    func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
     }
     
-    var json: String? {
-        guard let data = self.jsonData else { return nil }
-        return String(data: data, encoding: .utf8)
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
-extension PurpleData {
-    convenience init?(data: Data) {
-        guard let me = try? JSONDecoder().decode(PurpleData.self, from: data) else { return nil }
+extension WelcomeData {
+    convenience init(data: Data) throws {
+        let me = try JSONDecoder().decode(WelcomeData.self, from: data)
         self.init(categories: me.categories, commodities: me.commodities, forexRates: me.forexRates, moneyMarket: me.moneyMarket)
     }
     
-    convenience init?(_ json: String, using encoding: String.Encoding = .utf8) {
-        guard let data = json.data(using: encoding) else { return nil }
-        self.init(data: data)
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
     }
     
-    convenience init?(fromURL url: String) {
-        guard let url = URL(string: url) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        self.init(data: data)
+    convenience init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
     }
     
-    var jsonData: Data? {
-        return try? JSONEncoder().encode(self)
+    func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
     }
     
-    var json: String? {
-        guard let data = self.jsonData else { return nil }
-        return String(data: data, encoding: .utf8)
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
 extension Category {
-    convenience init?(data: Data) {
-        guard let me = try? JSONDecoder().decode(Category.self, from: data) else { return nil }
+    convenience init(data: Data) throws {
+        let me = try JSONDecoder().decode(Category.self, from: data)
         self.init(name: me.name, slug: me.slug)
     }
     
-    convenience init?(_ json: String, using encoding: String.Encoding = .utf8) {
-        guard let data = json.data(using: encoding) else { return nil }
-        self.init(data: data)
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
     }
     
-    convenience init?(fromURL url: String) {
-        guard let url = URL(string: url) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        self.init(data: data)
+    convenience init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
     }
     
-    var jsonData: Data? {
-        return try? JSONEncoder().encode(self)
+    func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
     }
     
-    var json: String? {
-        guard let data = self.jsonData else { return nil }
-        return String(data: data, encoding: .utf8)
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
 extension Commodity {
-    convenience init?(data: Data) {
-        guard let me = try? JSONDecoder().decode(Commodity.self, from: data) else { return nil }
+    convenience init(data: Data) throws {
+        let me = try JSONDecoder().decode(Commodity.self, from: data)
         self.init(id: me.id, name: me.name, data: me.data)
     }
     
-    convenience init?(_ json: String, using encoding: String.Encoding = .utf8) {
-        guard let data = json.data(using: encoding) else { return nil }
-        self.init(data: data)
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
     }
     
-    convenience init?(fromURL url: String) {
-        guard let url = URL(string: url) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        self.init(data: data)
+    convenience init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
     }
     
-    var jsonData: Data? {
-        return try? JSONEncoder().encode(self)
+    func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
     }
     
-    var json: String? {
-        guard let data = self.jsonData else { return nil }
-        return String(data: data, encoding: .utf8)
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
-extension CommodityDatum {
-    convenience init?(data: Data) {
-        guard let me = try? JSONDecoder().decode(CommodityDatum.self, from: data) else { return nil }
+extension ForexRate {
+    convenience init(data: Data) throws {
+        let me = try JSONDecoder().decode(ForexRate.self, from: data)
         self.init(name: me.name, longName: me.longName, dataValue: me.dataValue, date: me.date, todaysChange: me.todaysChange, imapact: me.imapact)
     }
     
-    convenience init?(_ json: String, using encoding: String.Encoding = .utf8) {
-        guard let data = json.data(using: encoding) else { return nil }
-        self.init(data: data)
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
     }
     
-    convenience init?(fromURL url: String) {
-        guard let url = URL(string: url) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        self.init(data: data)
+    convenience init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
     }
     
-    var jsonData: Data? {
-        return try? JSONEncoder().encode(self)
+    func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
     }
     
-    var json: String? {
-        guard let data = self.jsonData else { return nil }
-        return String(data: data, encoding: .utf8)
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
 extension MoneyMarket {
-    convenience init?(data: Data) {
-        guard let me = try? JSONDecoder().decode(MoneyMarket.self, from: data) else { return nil }
+    convenience init(data: Data) throws {
+        let me = try JSONDecoder().decode(MoneyMarket.self, from: data)
         self.init(categories: me.categories, kibor: me.kibor, libor: me.libor, pkrv: me.pkrv)
     }
     
-    convenience init?(_ json: String, using encoding: String.Encoding = .utf8) {
-        guard let data = json.data(using: encoding) else { return nil }
-        self.init(data: data)
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
     }
     
-    convenience init?(fromURL url: String) {
-        guard let url = URL(string: url) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        self.init(data: data)
+    convenience init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
     }
     
-    var jsonData: Data? {
-        return try? JSONEncoder().encode(self)
+    func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
     }
     
-    var json: String? {
-        guard let data = self.jsonData else { return nil }
-        return String(data: data, encoding: .utf8)
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
 extension Kibor {
-    convenience init?(data: Data) {
-        guard let me = try? JSONDecoder().decode(Kibor.self, from: data) else { return nil }
+    convenience init(data: Data) throws {
+        let me = try JSONDecoder().decode(Kibor.self, from: data)
         self.init(name: me.name, data: me.data)
     }
     
-    convenience init?(_ json: String, using encoding: String.Encoding = .utf8) {
-        guard let data = json.data(using: encoding) else { return nil }
-        self.init(data: data)
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
     }
     
-    convenience init?(fromURL url: String) {
-        guard let url = URL(string: url) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        self.init(data: data)
+    convenience init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
     }
     
-    var jsonData: Data? {
-        return try? JSONEncoder().encode(self)
+    func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
     }
     
-    var json: String? {
-        guard let data = self.jsonData else { return nil }
-        return String(data: data, encoding: .utf8)
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
 extension KiborDatum {
-    convenience init?(data: Data) {
-        guard let me = try? JSONDecoder().decode(KiborDatum.self, from: data) else { return nil }
+    convenience init(data: Data) throws {
+        let me = try JSONDecoder().decode(KiborDatum.self, from: data)
         self.init(tenor: me.tenor, bid: me.bid, offer: me.offer, frequency: me.frequency)
     }
     
-    convenience init?(_ json: String, using encoding: String.Encoding = .utf8) {
-        guard let data = json.data(using: encoding) else { return nil }
-        self.init(data: data)
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
     }
     
-    convenience init?(fromURL url: String) {
-        guard let url = URL(string: url) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        self.init(data: data)
+    convenience init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
     }
     
-    var jsonData: Data? {
-        return try? JSONEncoder().encode(self)
+    func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
     }
     
-    var json: String? {
-        guard let data = self.jsonData else { return nil }
-        return String(data: data, encoding: .utf8)
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
 extension Libor {
-    convenience init?(data: Data) {
-        guard let me = try? JSONDecoder().decode(Libor.self, from: data) else { return nil }
+    convenience init(data: Data) throws {
+        let me = try JSONDecoder().decode(Libor.self, from: data)
         self.init(name: me.name, data: me.data)
     }
     
-    convenience init?(_ json: String, using encoding: String.Encoding = .utf8) {
-        guard let data = json.data(using: encoding) else { return nil }
-        self.init(data: data)
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
     }
     
-    convenience init?(fromURL url: String) {
-        guard let url = URL(string: url) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        self.init(data: data)
+    convenience init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
     }
     
-    var jsonData: Data? {
-        return try? JSONEncoder().encode(self)
+    func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
     }
     
-    var json: String? {
-        guard let data = self.jsonData else { return nil }
-        return String(data: data, encoding: .utf8)
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
 extension LiborDatum {
-    convenience init?(data: Data) {
-        guard let me = try? JSONDecoder().decode(LiborDatum.self, from: data) else { return nil }
+    convenience init(data: Data) throws {
+        let me = try JSONDecoder().decode(LiborDatum.self, from: data)
         self.init(tenor: me.tenor, rate: me.rate, frequency: me.frequency)
     }
     
-    convenience init?(_ json: String, using encoding: String.Encoding = .utf8) {
-        guard let data = json.data(using: encoding) else { return nil }
-        self.init(data: data)
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
     }
     
-    convenience init?(fromURL url: String) {
-        guard let url = URL(string: url) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        self.init(data: data)
+    convenience init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
     }
     
-    var jsonData: Data? {
-        return try? JSONEncoder().encode(self)
+    func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
     }
     
-    var json: String? {
-        guard let data = self.jsonData else { return nil }
-        return String(data: data, encoding: .utf8)
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
 extension Pkrv {
-    convenience init?(data: Data) {
-        guard let me = try? JSONDecoder().decode(Pkrv.self, from: data) else { return nil }
+    convenience init(data: Data) throws {
+        let me = try JSONDecoder().decode(Pkrv.self, from: data)
         self.init(name: me.name, data: me.data)
     }
     
-    convenience init?(_ json: String, using encoding: String.Encoding = .utf8) {
-        guard let data = json.data(using: encoding) else { return nil }
-        self.init(data: data)
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
     }
     
-    convenience init?(fromURL url: String) {
-        guard let url = URL(string: url) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        self.init(data: data)
+    convenience init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
     }
     
-    var jsonData: Data? {
-        return try? JSONEncoder().encode(self)
+    func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
     }
     
-    var json: String? {
-        guard let data = self.jsonData else { return nil }
-        return String(data: data, encoding: .utf8)
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
     }
 }
 
-extension PkrvDatum {
-    convenience init?(data: Data) {
-        guard let me = try? JSONDecoder().decode(PkrvDatum.self, from: data) else { return nil }
-        self.init(tenor: me.tenor, midRate: me.midRate, change: me.change, frequency: me.frequency)
+extension PkrvData {
+    convenience init(data: Data) throws {
+        let me = try JSONDecoder().decode(PkrvData.self, from: data)
+        self.init(dates: me.dates, data: me.data)
     }
     
-    convenience init?(_ json: String, using encoding: String.Encoding = .utf8) {
-        guard let data = json.data(using: encoding) else { return nil }
-        self.init(data: data)
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
     }
     
-    convenience init?(fromURL url: String) {
-        guard let url = URL(string: url) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        self.init(data: data)
+    convenience init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
     }
     
-    var jsonData: Data? {
-        return try? JSONEncoder().encode(self)
+    func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
     }
     
-    var json: String? {
-        guard let data = self.jsonData else { return nil }
-        return String(data: data, encoding: .utf8)
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
     }
 }
-struct MarketSnapShotData{
-    let cell : Int!
-    let text1: String!
-    let subtext1: String!
-    let text2: String!
-    let text3: String!
-    let arrowIcon: UIImage!
+
+extension DataDatum {
+    convenience init(data: Data) throws {
+        let me = try JSONDecoder().decode(DataDatum.self, from: data)
+        self.init(oldDate: me.oldDate, newDate: me.newDate, oldMidrate: me.oldMidrate, newMidrate: me.newMidrate, oldChange: me.oldChange, newChange: me.newChange, oldTenor: me.oldTenor, newTenor: me.newTenor)
+    }
+    
+    convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
+    }
+    
+    convenience init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
+    }
+    
+    func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
+    }
+    
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
+    }
 }
+
 class MarketViewController: UIViewController, UITableViewDelegate , UITableViewDataSource, UIPickerViewDataSource , UIPickerViewDelegate {
    
-    var CommoditiesArray_chemical = [CommodityDatum]()
-    var CommoditiesArray_fertilizer = [CommodityDatum]()
-    var CommoditiesArray_steel = [CommodityDatum]()
-    var CommoditiesArray_sugar = [CommodityDatum]()
-    var CommoditiesArray_energy = [CommodityDatum]()
+    var CommoditiesArray_chemical = [ForexRate]()
+    var CommoditiesArray_fertilizer = [ForexRate]()
+    var CommoditiesArray_steel = [ForexRate]()
+    var CommoditiesArray_sugar = [ForexRate]()
+    var CommoditiesArray_energy = [ForexRate]()
     var selectedtab_comm = 0
     var rowscount = 0
     @IBOutlet weak var CommoditiesTabs: UISegmentedControl!
@@ -569,7 +568,7 @@ class MarketViewController: UIViewController, UITableViewDelegate , UITableViewD
     
     //fetching data
     func fetchCommodities(){
-      
+       let sv = UIViewController.displaySpinner(onView: self.view)
         guard let myUrl = URL(string: "http://videostreet.pk/tejori/tjApi/getCategoryData/") else { return }
         var request = URLRequest(url:myUrl)
         request.addValue("876564123", forHTTPHeaderField: "X-TJ-APIKEY")
@@ -581,28 +580,30 @@ class MarketViewController: UIViewController, UITableViewDelegate , UITableViewD
         
         URLSession.shared.dataTask(with: request) { data, urlResponse, error in
             guard let data = data, error == nil, urlResponse != nil else {
+                 UIViewController.removeSpinner(spinner: sv)
                 print("something is wrong")
                 return
             }
             print("downloaded")
-           
+             UIViewController.removeSpinner(spinner: sv)
             
             do
             {
                 let decoder = JSONDecoder()
                 let MarketData = try decoder.decode(Welcome.self, from: data)
-               print(MarketData.data.commodities[0].name)
-                  self.CommoditiesArray_chemical = MarketData.data.commodities[0].data
-                  self.CommoditiesArray_fertilizer = MarketData.data.commodities[1].data
-                  self.CommoditiesArray_steel = MarketData.data.commodities[2].data
-                  self.CommoditiesArray_sugar = MarketData.data.commodities[3].data
-                  self.CommoditiesArray_energy = MarketData.data.commodities[4].data
+              //  print(MarketData.data?.commodities![0].name)
+                self.CommoditiesArray_chemical = (MarketData.data?.commodities![0].data)!
+                self.CommoditiesArray_fertilizer = (MarketData.data?.commodities![1].data)!
+                self.CommoditiesArray_steel = (MarketData.data?.commodities![2].data)!
+                self.CommoditiesArray_sugar = (MarketData.data?.commodities![3].data)!
+                self.CommoditiesArray_energy = (MarketData.data?.commodities![4].data)!
              //   self.commoditiesArray = commoditiesres.data
              //   print(self.commoditiesArray[0].name)
                 DispatchQueue.main.async {
                     self.marketDataSnapShotsTableView.reloadData()
                 }
             } catch {
+                 print("something is wrong after downloading")
                 print(error)
             }
             }.resume()
@@ -650,7 +651,7 @@ class MarketViewController: UIViewController, UITableViewDelegate , UITableViewD
             cell.Text3.text = CommoditiesArray_chemical[indexPath.row].todaysChange
           
             
-            if CommoditiesArray_chemical[indexPath.row].imapact == "-"{
+            if CommoditiesArray_chemical[indexPath.row].imapact == "-" {
                 cell.Text3.textColor = UIColor.red
                 cell.ArrowIcon.image = UIImage(named: "negative")
             }

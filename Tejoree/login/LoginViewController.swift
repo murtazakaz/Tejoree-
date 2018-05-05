@@ -8,13 +8,35 @@
 
 import UIKit
 import TextFieldEffects
+
 struct Login: Codable {
     let success: Bool
     let message: [String]
 }
 
 // MARK: Convenience initializers
-
+extension UIViewController {
+    class func displaySpinner(onView : UIView) -> UIView {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        return spinnerView
+    }
+    
+    class func removeSpinner(spinner :UIView) {
+        DispatchQueue.main.async {
+            spinner.removeFromSuperview()
+        }
+    }
+}
 extension Login {
     init(data: Data) throws {
         self = try JSONDecoder().decode(Login.self, from: data)
@@ -50,8 +72,27 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func fblogin(_ sender: Any) {
+        let sv = UIViewController.displaySpinner(onView: self.view)
+        FacebookSignInManager.basicInfoWithCompletionHandler(self) { (dataDictionary:Dictionary<String, AnyObject>?, error:NSError?) -> Void in
+            print("success")
+            print(dataDictionary?["name"])
+            if(dataDictionary?["name"] == nil){
+                 UIViewController.removeSpinner(spinner: sv)
+          print("error fb")
+            }else{
+                let news = self.storyboard?.instantiateViewController(withIdentifier: "homepage")
+                
+                self.navigationController?.pushViewController( news!, animated: true)
+                UIViewController.removeSpinner(spinner: sv)
+            }
+        }
+    }
     @IBAction func signin(_ sender: Any) {
+        
+     
         if self.email.text == ""{
+            
             let alert = UIAlertController(title: "Failed" , message: "Please provide Email"    , preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: nil))
@@ -70,6 +111,8 @@ class LoginViewController: UIViewController {
             let pass = "&password="+self.password.text!
             let em = "&email="+self.email.text!;
             
+            let sv = UIViewController.displaySpinner(onView: self.view)
+            
             guard let myUrl = URL(string: "http://videostreet.pk/tejori/tjApi/getLoggedIn") else { return }
             var request = URLRequest(url:myUrl)
             request.addValue("876564123", forHTTPHeaderField: "X-TJ-APIKEY")
@@ -81,9 +124,17 @@ class LoginViewController: UIViewController {
             print(request)
             URLSession.shared.dataTask(with: request) { data, urlResponse, error in
                 guard let data = data, error == nil, urlResponse != nil else {
+                   
+                  UIViewController.removeSpinner(spinner: sv)
+                    let alertController = UIAlertController(title: "", message:
+                        "Slow or No Internet", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.default,handler: nil))
+                    
+                    self.present(alertController, animated: true, completion: nil)
                     print("something is wrong")
                     return
                 }
+                 UIViewController.removeSpinner(spinner: sv)
                 print("signup")
                 print(data)
                 
@@ -100,8 +151,10 @@ class LoginViewController: UIViewController {
                         
                         //   self.tableView.reloadData()
                         if data.success == true{
-                         
+                         	
+                            let news = self.storyboard?.instantiateViewController(withIdentifier: "homepage")
                             
+                            self.navigationController?.pushViewController( news!, animated: true)
                             
                         }else {
                             let alertController = UIAlertController(title: "Login", message:
@@ -133,5 +186,6 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-}
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }}

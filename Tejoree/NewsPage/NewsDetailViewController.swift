@@ -25,7 +25,10 @@ class NewsDetailViewController: UIViewController {
     @IBOutlet weak var desc_text: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if banner == ""{
+            self.ban_image.image = #imageLiteral(resourceName: "no-image")
+        }
+        else {
         if let imageURL = URL(string: banner) {
             DispatchQueue.global().async {
                 let data = try? Data(contentsOf: imageURL)
@@ -36,6 +39,7 @@ class NewsDetailViewController: UIViewController {
                     }
                 }
             }
+        }
         }
         
         let separated = date.split(separator: " ")

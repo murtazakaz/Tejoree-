@@ -8,7 +8,8 @@
 
 import UIKit
 
-class HighConvictionTableViewController: UITableViewController {
+class HighConvictionTableViewController: UITableViewController  {
+ 
 
     override func viewDidLoad() {
         super.viewDidLoad()
