@@ -21,6 +21,7 @@
 		FA6867A21FC3335600C2F9FF /* AkseerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6867A11FC3335600C2F9FF /* AkseerViewController.swift */; };
 		FA6867A51FC3335600C2F9FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6867A31FC3335600C2F9FF /* Main.storyboard */; };
 		FA6867AA1FC3335600C2F9FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6867A81FC3335600C2F9FF /* LaunchScreen.storyboard */; };
+		FA68DA5D209FB5D60066CA33 /* performancereviewviewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68DA5C209FB5D60066CA33 /* performancereviewviewcontroller.swift */; };
 		FA6F59A5204F06AA000655A6 /* HighConvictionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F59A4204F06AA000655A6 /* HighConvictionViewController.swift */; };
 		FA6F59A8204F27AA000655A6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F59A7204F27AA000655A6 /* LoginViewController.swift */; };
 		FA84D31E1FD7523C007FE403 /* BrokerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA84D31D1FD7523C007FE403 /* BrokerViewController.swift */; };
@@ -73,6 +74,7 @@
 		FA6867A41FC3335600C2F9FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA6867A91FC3335600C2F9FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA6867AB1FC3335600C2F9FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA68DA5C209FB5D60066CA33 /* performancereviewviewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = performancereviewviewcontroller.swift; sourceTree = "<group>"; };
 		FA6F59A4204F06AA000655A6 /* HighConvictionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighConvictionViewController.swift; sourceTree = "<group>"; };
 		FA6F59A7204F27AA000655A6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA84D31D1FD7523C007FE403 /* BrokerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokerViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 		FA68679E1FC3335600C2F9FF /* Tejoree */ = {
 			isa = PBXGroup;
 			children = (
+				FA68DA5B209FB5A30066CA33 /* Performance Review */,
 				FA034CBB2073EE74006DE2A9 /* credentials.plist */,
 				FA6F59A6204F2794000655A6 /* login */,
 				FAC8238F1FE0730900A6C366 /* ForgetPasswordPage */,
@@ -184,6 +187,14 @@
 				FA381D4220712000006E6E80 /* FacebookLoginManager.swift */,
 			);
 			path = Tejoree;
+			sourceTree = "<group>";
+		};
+		FA68DA5B209FB5A30066CA33 /* Performance Review */ = {
+			isa = PBXGroup;
+			children = (
+				FA68DA5C209FB5D60066CA33 /* performancereviewviewcontroller.swift */,
+			);
+			path = "Performance Review";
 			sourceTree = "<group>";
 		};
 		FA6F59A6204F2794000655A6 /* login */ = {
@@ -490,6 +501,7 @@
 				FA627DA2208FC4CA006D78FD /* insightNews.swift in Sources */,
 				FA8593C11FDD6AAF009F0E81 /* StockRateViewController.swift in Sources */,
 				FAF97426201BDFE7006692F2 /* NewsDetailViewController.swift in Sources */,
+				FA68DA5D209FB5D60066CA33 /* performancereviewviewcontroller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
